@@ -1,0 +1,734 @@
+@charset "utf-8";
+@import "./colors";
+@import "./mixins.scss";
+@import "./globals";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-family: sans-serif;
+}
+a:link,
+a:visited {
+  text-decoration: none;
+  color: $sub-color;
+}
+a:hover,
+a:active {
+  color: $main-color;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: toRem(90);
+
+  &__nav {
+    &-list {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      font-size: toRem(20);
+    }
+    &-link {
+      &--active {
+        &:link,
+        &:visited {
+          color: $main-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__login {
+    padding-left: 5rem;
+    font-size: toRem(18);
+    font-weight: bold;
+  }
+}
+
+.logo {
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__image {
+    width: 72px;
+    height: 56px;
+  }
+
+  &__title {
+    background: linear-gradient(
+      to right,
+      $secondary-color 40%,
+      $main-color 50%
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: toRem(24);
+    font-weight: bold;
+  }
+}
+.hero {
+  background: linear-gradient(135deg, $background-color 25%, $main-color 100%);
+  color: white;
+  padding: toRem(192);
+  text-align: center;
+  max-width: toRem(1780);
+  margin: 0 auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: toRem(24);
+  @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+  &__tag {
+    color: $secondary-color;
+    font-size: toRem(24);
+    font-weight: bold;
+  }
+  &__title {
+    font-weight: bold;
+    font-size: toRem(60);
+    line-height: 1.4;
+    max-width: 18ch;
+  }
+  &__search-bar {
+    width: 100%;
+    max-width: toRem(720);
+    margin: 1rem 0;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    background: #fff;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+  }
+  &__search-input {
+    width: 100%;
+    border: 0;
+    border-radius: 15px;
+    &:focus,
+    &:hover {
+      outline: none;
+    }
+  }
+  &__search-submit {
+    background-color: $main-color;
+    padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+    font-size: toRem(14);
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    &::before {
+      content: url(/images/misc/stars-icon.svg);
+      scale: 0.7;
+    }
+  }
+  &__list {
+    display: flex;
+    gap: 1rem;
+    li::before {
+      content: "✔";
+    }
+  }
+}
+
+.partners {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  &__list {
+    padding: 1rem 5rem;
+    border-radius: 20px;
+    @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+    display: flex;
+    background-color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+  }
+}
+
+.course-categories {
+  text-align: center;
+  &__list {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(5, toRem(150));
+    justify-content: center;
+    align-items: center;
+    row-gap: toRem(72);
+    column-gap: toRem(100);
+    margin-bottom: toRem(128);
+  }
+  &__title {
+    font-weight: 600;
+    font-size: toRem(20);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  &__count {
+    color: $sub-color;
+  }
+}
+
+.course-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  background-color: $secondary-background-color;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: toRem(90) 0;
+  gap: 20px;
+  &__title {
+    text-align: center;
+    color: $sub-color;
+    font-size: toRem(44);
+    font-weight: bold;
+    line-height: 1.35;
+    max-width: 22ch;
+    &--red {
+      text-decoration: underline solid $secondary-color 6px;
+      text-underline-position: below;
+      text-underline-offset: 1px;
+    }
+  }
+  &__categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: toRem(30) toRem(160);
+    gap: toRem(80);
+    border-radius: 10px;
+  }
+
+  &__filter-btn {
+    background-color: white;
+    border: none;
+    font-size: toRem(18);
+    color: $sub-color;
+    font-weight: bold;
+    &:hover,
+    &:active {
+      cursor: pointer;
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+    &--active {
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+  }
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4fd;
+    @media screen and (max-width: 720px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+    }
+  }
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: toRem(130);
+  padding: toRem(50);
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    column-gap: toRem(8);
+  }
+  &__icon {
+    grid-row: 1/-1;
+  }
+  &__numbers {
+    font-size: toRem(34);
+  }
+  &__title {
+    color: $sub-color;
+  }
+}
+
+.tag {
+  border-radius: 40px;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1rem;
+  color: $main-color;
+  background-color: $tag-color;
+}
+.course-card {
+  width: toRem(385);
+  height: toRem(475);
+  padding: 0 1.5rem;
+  background-color: #fff;
+  @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  &__image {
+    align-self: center;
+    max-width: 354px;
+    max-height: 221px;
+  }
+  &__time {
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__lessons {
+    display: flex;
+    gap: 0.5rem;
+    &::before {
+      content: url(/images/misc/book-icon.svg);
+    }
+  }
+  &__duration {
+    display: flex;
+    gap: 0.5rem;
+    &::before {
+      content: url(/images/misc/clock-icon.svg);
+    }
+  }
+  &__title {
+    font-weight: bold;
+    font-size: toRem(20);
+  }
+  &__price {
+    color: $main-color;
+    font-size: toRem(18);
+  }
+  &__author {
+    align-self: stretch;
+    font-weight: 600;
+    padding-top: 1rem;
+    border-top: 1px solid hsla(0, 0%, 0%, 0.05);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/images/homepage/background-images/sign-up-bg.png);
+  background-repeat: repeat-x;
+  background-position: center;
+  padding: toRem(100);
+  gap: toRem(20);
+
+  &__title {
+    font-size: toRem(45);
+    text-align: center;
+    color: white;
+    max-width: 40ch;
+    &--orange {
+      color: orange;
+    }
+  }
+
+  &__desc {
+    color: $tag-color;
+    font-size: toRem(20);
+  }
+  &__link {
+    margin-top: toRem(40);
+    border-radius: 40px;
+    background-color: #8761f1;
+    padding: 1rem;
+    &:link,
+    &:visited {
+      color: $tag-color;
+      font-weight: bold;
+    }
+  }
+}
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: toRem(60) 0;
+  gap: toRem(60);
+  &__title {
+    text-align: center;
+    color: $sub-color;
+    font-size: toRem(44);
+    max-width: 24ch;
+    &--red {
+      text-decoration: underline solid $secondary-color 6px;
+      text-underline-position: below;
+      text-underline-offset: 1px;
+    }
+  }
+  &__columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: toRem(40);
+    & > :nth-child(2n + 1) {
+      background-color: $secondary-background-color;
+    }
+  }
+  &__column {
+    padding: toRem(40) toRem(50);
+    @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+    color: $sub-color;
+    font-weight: bold;
+    @include transition(box-shadow, 0.3s, ease-in);
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    justify-content: space-between;
+    gap: 40px;
+    &:hover {
+      @include shadow(0, 4px, 12px, rgba(0, 0, 0, 0.6));
+    }
+  }
+  &__plan {
+    font-size: toRem(28);
+  }
+  &__price {
+    font-size: toRem(50);
+    &--small {
+      font-size: toRem(22);
+      font-weight: 400;
+    }
+  }
+  &__description {
+    max-width: 25ch;
+  }
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+    font-size: toRem(18);
+    & li {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: toRem(12);
+      &::before {
+        content: "";
+        color: white;
+        font-size: toRem(12);
+        border-radius: 60%;
+        padding: 0.4rem;
+        background-color: $secondary-color;
+      }
+    }
+  }
+  &__courses {
+    max-width: 28ch;
+  }
+  &__column:nth-of-type(odd) &__credit {
+    color: $secondary-color;
+  }
+  &__credit {
+    width: max-content;
+    align-self: center;
+  }
+}
+
+.reviews {
+  display: flex;
+  background-color: $secondary-background-color;
+  justify-content: center;
+  padding: toRem(80);
+  gap: toRem(60);
+  align-items: center;
+  flex-wrap: wrap;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: toRem(32);
+  }
+
+  &__title {
+    font-size: toRem(36);
+    max-width: 14ch;
+    color: $sub-color;
+  }
+  &__desc {
+    color: $sub-color;
+  }
+  &__review {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(30);
+  }
+  &__text {
+    max-width: 30ch;
+    background-color: white;
+    padding: toRem(30);
+    color: $sub-color;
+    position: relative;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: toRem(35);
+      bottom: -10px;
+      @include rotate-element(45deg);
+      background-color: rgb(255, 255, 255);
+    }
+    &::after {
+      content: "\275D";
+      display: inline-block;
+      background-color: $main-color;
+      position: absolute;
+      font-size: toRem(50);
+      padding: toRem(20) toRem(4) 0 toRem(4);
+      color: #fff;
+      line-height: 0.3;
+      left: toRem(-10);
+      top: toRem(-10);
+    }
+  }
+  &__authors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &__author {
+    font-weight: bold;
+    &--gray {
+      font-size: toRem(13);
+      color: $sub-color;
+    }
+  }
+}
+
+.news-blog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: toRem(50);
+  padding: toRem(100) toRem(50);
+  &__link {
+    color: $sub-color;
+    @include transition(box-shadow, 1s, ease-in);
+    @include transition(color, 1s, ease-in-out);
+    &:hover,
+    &:active {
+      cursor: pointer;
+      @include shadow(0, 0, 20px, rgba(95, 45, 237, 0.5));
+    }
+  }
+  &__title {
+    font-size: toRem(44);
+    color: $sub-color;
+  }
+  &__cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(40);
+    flex-wrap: wrap;
+  }
+  &__card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: toRem(30);
+    width: 400px;
+    height: 400px;
+    @include shadow(0, 0px, 8px, rgba(0, 0, 0, 0.4));
+    padding: toRem(35);
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__name {
+    align-self: flex-start;
+    color: #000;
+    font-size: toRem(20);
+    font-weight: bold;
+    max-width: 30ch;
+  }
+  &__image {
+    max-width: 370px;
+    max-height: 222px;
+  }
+  &__author {
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: toRem(20);
+    &-image {
+      max-width: 42px;
+    }
+  }
+}
+
+.support {
+  background-color: $footer-bg-color;
+  padding: toRem(50);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: toRem(50);
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(30);
+  }
+  &__title {
+    font-size: toRem(40);
+    font-weight: bold;
+    color: #fff;
+    &--purple {
+      color: $main-color;
+    }
+  }
+  &__text {
+    color: $sub-color;
+    font-weight: 600;
+  }
+  &__form {
+    padding-left: toRem(100);
+  }
+  &__input {
+    background-color: #202942;
+    border: none;
+    color: hsl(0, 0%, 100%);
+    padding: toRem(20);
+    width: toRem(420);
+  }
+  &__btn {
+    background-color: $main-color;
+    border: none;
+    padding: toRem(20);
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  background-color: $footer-bg-color;
+  padding: toRem(50);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: toRem(100);
+  &__title {
+    color: white;
+  }
+  &__about {
+    color: $footer-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: toRem(20);
+    &-text {
+      line-height: 1.5;
+      max-width: 40ch;
+    }
+    &-hours {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      left: 75px;
+      gap: toRem(10);
+      &::before {
+        content: url(/images/misc/clock-symbol.svg);
+        background-color: $main-color;
+        padding: toRem(20);
+        position: absolute;
+        transform: translateX(-110%);
+      }
+    }
+    &-opening {
+      color: white;
+      font-weight: 500;
+    }
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: toRem(20);
+    }
+    &-link {
+      &:link,
+      &:visited {
+        color: $footer-color;
+      }
+    }
+  }
+  &__social {
+    display: flex;
+    flex-direction: column;
+    padding-top: toRem(50);
+    gap: toRem(50);
+    &-list {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}

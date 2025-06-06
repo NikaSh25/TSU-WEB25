@@ -1,0 +1,38 @@
+@mixin transition($command, $time, $effect) {
+  -webkit-transition: $command $time $effect;
+  -moz-transition: $command $time $effect;
+  -o-transition: $command $time $effect;
+  transition: $command $time $effect;
+}
+@mixin shadow($h-offset: 0px, $v-offset: 0px, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $h-offset $v-offset $blur $color;
+    -moz-box-shadow: inset $h-offset $v-offset $blur $color;
+    box-shadow: inset $h-offset $v-offset $blur $color;
+  } @else {
+    -webkit-box-shadow: $h-offset $v-offset $blur $color;
+    -moz-box-shadow: $h-offset $v-offset $blur $color;
+    box-shadow: $h-offset $v-offset $blur $color;
+  }
+}
+
+@mixin rotate-element($degree) {
+  -webkit-transform: rotate($degree);
+  -moz-transform: rotate($degree);
+  -o-transform: rotate($degree);
+  transform: rotate($degree);
+}
+
+@mixin gradient($orientation, $list, $defColor) {
+  @if $orientation == "vertical" {
+    background: $defColor;
+    background: -moz-linear-gradient(top, $list);
+    background: -webkit-linear-gradient(top, $list);
+    background: linear-gradient(to bottom, $list);
+  } @else if $orientation == "horizontal" {
+    background: $defColor;
+    background: -moz-linear-gradient(left, $list);
+    background: -webkit-linear-gradient(left, $list);
+    background: linear-gradient(to right, $list);
+  }
+}
