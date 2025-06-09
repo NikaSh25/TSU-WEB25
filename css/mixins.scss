@@ -36,3 +36,13 @@
     background: linear-gradient(to right, $list);
   }
 }
+
+@mixin tag {
+  border-radius: 40px;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #5f2ded;
+  background-color: #e7deff;
+  font-weight: bold;
+}

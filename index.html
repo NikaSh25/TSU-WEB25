@@ -19,6 +19,7 @@
           <h1 class="logo__title">SkillBoost</h1>
         </a>
       </div>
+      <button class="header__nav-hamburger" onclick="">☰</button>
       <nav class="header__nav">
         <ul class="header__nav-list">
           <li>
@@ -28,9 +29,15 @@
           <li><a class="header__nav-link" href="courses.html">Courses</a></li>
           <li><a class="header__nav-link" href="blog.html">Blog</a></li>
           <li><a class="header__nav-link" href="contact.html">Contact</a></li>
+          <li>
+            <a
+              href="login.html"
+              class="header__nav-link header__nav-link--login"
+              >Login</a
+            >
+          </li>
         </ul>
       </nav>
-      <a href="login.html" class="header__login">Login</a>
     </header>
     <main class="main">
       <section class="hero">
@@ -53,31 +60,32 @@
 
       <section class="partners">
         <ul class="partners__list">
-          <li>
+          <li class="partners__logo">
             <img
               src="images/homepage/partners/atlas-logo.svg"
               alt="Partner Company - Atlas logo"
             />
           </li>
-          <li>
+          <li class="partners__logo">
             <img
               src="images/homepage/partners/circle-logo.svg"
               alt="Partner Company - Circle logo"
             />
           </li>
-          <li>
+          <li class="partners__logo">
             <img
               src="images/homepage/partners/hexa-logo.svg"
               alt="Partner Company - hexa logo"
             />
           </li>
-          <li>
+          <li class="partners__logo">
             <img
               src="images/homepage/partners/josef-logo.svg"
               alt="Partner Company - Josef logo"
             />
           </li>
-          <li>
+
+          <li class="partners__logo">
             <img
               src="images/homepage/partners/treva-logo.svg"
               alt="Partner Company - Treva logo"
@@ -89,50 +97,50 @@
       <section class="course-categories">
         <ul class="course-categories__list">
           <li class="course-categories__item">
-            <p class="course-categories__title">Artificial Intelligence</p>
+            <h5 class="course-categories__title">Artificial Intelligence</h5>
             <span class="course-categories__count">14 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Communication</p>
+            <h5 class="course-categories__title">Communication</h5>
             <span class="course-categories__count">23 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Language</p>
+            <h5 class="course-categories__title">Language</h5>
             <span class="course-categories__count">24 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Management</p>
+            <h5 class="course-categories__title">Management</h5>
             <span class="course-categories__count">10 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Marketing</p>
+            <h5 class="course-categories__title">Marketing</h5>
             <span class="course-categories__count">14 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Servers</p>
+            <h5 class="course-categories__title">Servers</h5>
             <span class="course-categories__count">20 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Programming</p>
+            <h5 class="course-categories__title">Programming</h5>
             <span class="course-categories__count">34 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">SEO</p>
+            <h5 class="course-categories__title">SEO</h5>
             <span class="course-categories__count">10 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Technology</p>
+            <h5 class="course-categories__title">Technology</h5>
             <span class="course-categories__count">14 Courses</span>
           </li>
           <li class="course-categories__item">
-            <p class="course-categories__title">Design</p>
+            <h5 class="course-categories__title">Design</h5>
             <span class="course-categories__count">30 Courses</span>
           </li>
         </ul>
       </section>
 
       <section class="course-list">
-        <h3 class="course-list__tag tag">Course List</h3>
+        <span class="course-list__tag">Course List</span>
         <h2 class="course-list__title">
           Perfect Online
           <span class="course-list__title--red">Courses</span> For Your Career
@@ -184,102 +192,126 @@
             </button>
           </li>
         </ul>
-        <div class="course-list__cards">
-          <article class="course-card" data-category="featured">
-            <img
-              src="images/homepage/course-images/course-image-2.png"
-              alt="Course Image"
-              class="course-card__image"
-            />
-            <div class="course-card__time">
-              <span class="course-card__lessons">3 Lessons</span>
-              <span class="course-card__duration"> 2 hours 40 minutes</span>
-            </div>
-            <p class="course-card__title">
-              Learn Essentials of User Interface Design in Figma
-            </p>
-            <strong class="course-card__price">$60.00</strong>
-            <p class="course-card__author">John Cena</p>
-          </article>
-          <article class="course-card" data-category="marketing">
-            <img
-              src="images/homepage/course-images/course-image-5.png"
-              alt="Course Image"
-              class="course-card__image"
-            />
-            <div class="course-card__time">
-              <span class="course-card__lessons">5 Lessons</span>
-              <span class="course-card__duration"> 5 hours 40 minutes</span>
-            </div>
-            <p class="course-card__title">
-              Designer Essential Skills You Must Need To Know
-            </p>
-            <strong class="course-card__price">$40.00</strong>
-            <p class="course-card__author">Jonas Schmedtmann</p>
-          </article>
-          <article class="course-card" data-category="language">
-            <img
-              src="images/homepage/course-images/course-image-3.png"
-              alt="Course Image"
-              class="course-card__image"
-            />
-            <div class="course-card__time">
-              <span class="course-card__lessons">6 Lessons</span>
-              <span class="course-card__duration"> 12 hours 40 minutes</span>
-            </div>
-            <p class="course-card__title">
-              Python for Data Science & Machine Learning
-            </p>
-            <strong class="course-card__price">$86.00</strong>
-            <p class="course-card__author">Jhon Sina</p>
-          </article>
-          <article class="course-card" data-category="artificial">
-            <img
-              src="images/homepage/course-images/course-image-1.png"
-              alt="Course Image"
-              class="course-card__image"
-            />
-            <div class="course-card__time">
-              <span class="course-card__lessons">4 Lessons</span>
-              <span class="course-card__duration"> 5 hours 55 minutes</span>
-            </div>
-            <p class="course-card__title">
-              Strategy Law and Organization Foundation
-            </p>
-            <strong class="course-card__price">$128.00</strong>
-            <p class="course-card__author">Jhon Sina</p>
-          </article>
-          <article class="course-card" data-category="language">
-            <img
-              src="images/homepage/course-images/course-image-5.png"
-              alt="Course Image"
-              class="course-card__image"
-            />
-            <div class="course-card__time">
-              <span class="course-card__lessons">3 Lessons</span>
-              <span class="course-card__duration"> 6 hours 40 minutes</span>
-            </div>
-            <p class="course-card__title">Psychology of Success</p>
-            <strong class="course-card__price">$55.00</strong>
-            <p class="course-card__author">Jhon Sina</p>
-          </article>
-          <article class="course-card" data-category="artificial">
-            <img
-              src="images/homepage/course-images/course-image-4.png"
-              alt="Course Image"
-              class="course-card__image"
-            />
-            <div class="course-card__time">
-              <span class="course-card__lessons">2 Lessons</span>
-              <span class="course-card__duration"> 4 hours 35 minutes</span>
-            </div>
-            <p class="course-card__title">
-              Learning A-Z: Hands-On Python for Beginners
-            </p>
-            <strong class="course-card__price">$20.00</strong>
-            <p class="course-card__author">Jhon Sina</p>
-          </article>
-        </div>
+        <ul class="course-list__cards">
+          <li class="course-list__item" data-category="featured">
+            <a href="course-figma.html" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="images/homepage/course-images/course-image-2.png"
+                  alt="Course Image"
+                  class="course-card__image"
+                />
+                <div class="course-card__time">
+                  <span class="course-card__lessons">3 Lessons</span>
+                  <span class="course-card__duration">2 hours 40 minutes</span>
+                </div>
+                <p class="course-card__title">
+                  Learn Essentials of User Interface Design in Figma
+                </p>
+                <strong class="course-card__price">$60.00</strong>
+                <p class="course-card__author">John Cena</p>
+              </article>
+            </a>
+          </li>
+          <li class="course-list__item" data-category="marketing">
+            <a href="course-designer-skills.html" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="images/homepage/course-images/course-image-5.png"
+                  alt="Course Image"
+                  class="course-card__image"
+                />
+                <div class="course-card__time">
+                  <span class="course-card__lessons">5 Lessons</span>
+                  <span class="course-card__duration">5 hours 40 minutes</span>
+                </div>
+                <p class="course-card__title">
+                  Designer Essential Skills You Must Need To Know
+                </p>
+                <strong class="course-card__price">$40.00</strong>
+                <p class="course-card__author">Jonas Schmedtmann</p>
+              </article>
+            </a>
+          </li>
+          <li class="course-list__item" data-category="language">
+            <a href="course-python-dsml.html" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="images/homepage/course-images/course-image-3.png"
+                  alt="Course Image"
+                  class="course-card__image"
+                />
+                <div class="course-card__time">
+                  <span class="course-card__lessons">6 Lessons</span>
+                  <span class="course-card__duration">12 hours 40 minutes</span>
+                </div>
+                <p class="course-card__title">
+                  Python for Data Science & Machine Learning
+                </p>
+                <strong class="course-card__price">$86.00</strong>
+                <p class="course-card__author">Jhon Sina</p>
+              </article>
+            </a>
+          </li>
+          <li class="course-list__item" data-category="artificial">
+            <a href="course-strategy-law.html" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="images/homepage/course-images/course-image-1.png"
+                  alt="Course Image"
+                  class="course-card__image"
+                />
+                <div class="course-card__time">
+                  <span class="course-card__lessons">4 Lessons</span>
+                  <span class="course-card__duration">5 hours 55 minutes</span>
+                </div>
+                <p class="course-card__title">
+                  Strategy Law and Organization Foundation
+                </p>
+                <strong class="course-card__price">$128.00</strong>
+                <p class="course-card__author">Jhon Sina</p>
+              </article>
+            </a>
+          </li>
+          <li class="course-list__item" data-category="language">
+            <a href="course-psych-success.html" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="images/homepage/course-images/course-image-5.png"
+                  alt="Course Image"
+                  class="course-card__image"
+                />
+                <div class="course-card__time">
+                  <span class="course-card__lessons">3 Lessons</span>
+                  <span class="course-card__duration">6 hours 40 minutes</span>
+                </div>
+                <p class="course-card__title">Psychology of Success</p>
+                <strong class="course-card__price">$55.00</strong>
+                <p class="course-card__author">Jhon Sina</p>
+              </article>
+            </a>
+          </li>
+          <li class="course-list__item" data-category="artificial">
+            <a href="course-python-beginners.html" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="images/homepage/course-images/course-image-4.png"
+                  alt="Course Image"
+                  class="course-card__image"
+                />
+                <div class="course-card__time">
+                  <span class="course-card__lessons">2 Lessons</span>
+                  <span class="course-card__duration">4 hours 35 minutes</span>
+                </div>
+                <p class="course-card__title">
+                  Learning A-Z: Hands-On Python for Beginners
+                </p>
+                <strong class="course-card__price">$20.00</strong>
+                <p class="course-card__author">Jhon Sina</p>
+              </article>
+            </a>
+          </li>
+        </ul>
       </section>
       <section class="stats">
         <div class="stats__container">
@@ -320,7 +352,7 @@
         </div>
       </section>
       <section class="register">
-        <h3 class="register__tag tag">Join Us</h3>
+        <span class="register__tag">Join Us</span>
         <h2 class="register__title">
           Register Your Account and Get Free Access to
           <strong class="register__title--orange">60000</strong> Online Courses
@@ -331,7 +363,7 @@
         <a href="register.html" class="register__link">Register now!</a>
       </section>
       <section class="pricing">
-        <h3 class="pricing__tag tag">Pricing Plan</h3>
+        <span class="pricing__tag">Pricing Plan</span>
         <h2 class="pricing__title">
           Choose The Best Package For
           <span class="pricing__title--red">Your</span> Learning
@@ -386,7 +418,7 @@
       </section>
       <section class="reviews">
         <div class="reviews__container">
-          <h3 class="reviews__tag tag">Reviews</h3>
+          <span class="reviews__tag">Reviews</span>
           <h2 class="reviews__title">What They Say About Us</h2>
           <p class="reviews__desc">Discover what others are saying about us.</p>
         </div>
@@ -422,7 +454,7 @@
         </div>
       </section>
       <section class="news-blog">
-        <h3 class="news-blog__tag tag">News Blog</h3>
+        <span class="news-blog__tag">News Blog</span>
         <h2 class="news-blog__title">Latest News and Blogs</h2>
         <div class="news-blog__cards">
           <a href="#" class="news-blog__link"
@@ -503,7 +535,9 @@
           type="email"
           placeholder="Enter your email here"
         />
-        <button class="support__btn" type="submit">Send Email</button>
+        <button class="support__btn" type="submit">
+          Send <span class="support__btn--responsive">Email</span>
+        </button>
       </form>
     </section>
 

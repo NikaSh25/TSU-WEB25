@@ -17,7 +17,7 @@ document.querySelectorAll(".course-list__filter-btn").forEach((button) =>
   button.addEventListener("click", () => {
     const filter = button.getAttribute("data-filter");
     const courses = document.querySelectorAll(
-      ".course-list__cards .course-card"
+      ".course-list__cards .course-list__item"
     );
 
     document.querySelectorAll(".course-list__filter-btn").forEach((button) => {
@@ -39,3 +39,19 @@ document.querySelectorAll(".course-list__filter-btn").forEach((button) =>
     });
   })
 );
+
+document
+  .querySelector(".header__nav-hamburger")
+  .addEventListener("click", () => {
+    const dropdown_list = document.querySelector(".header__nav");
+    dropdown_list.classList.toggle("header__nav--dropdown");
+    console.log("hello");
+  });
+
+window.addEventListener("scroll", () => {
+  const dropdownList = document.querySelector(".header__nav");
+
+  if (dropdownList.classList.contains("header__nav--dropdown")) {
+    dropdownList.classList.remove("header__nav--dropdown");
+  }
+});
