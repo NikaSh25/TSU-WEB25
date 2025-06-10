@@ -984,7 +984,7 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 12.5rem;
+  padding: 12.5rem 3.125rem;
   background-image: url(../images/contact/Background.png);
   background-repeat: repeat;
   gap: 2.5rem;
@@ -1071,4 +1071,79 @@ ul {
   font-size: 1.25rem;
   border-radius: 15px;
   cursor: pointer;
+}
+
+.about-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5rem 3.125rem;
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: 2.5rem;
+  position: relative;
+}
+.about-hero__title {
+  font-size: 3.4375rem;
+}
+.about-hero__text {
+  color: #5f6c76;
+  width: 40ch;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6.25rem;
+  padding: 12.5rem 3.125rem;
+}
+.about__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+  max-width: 50ch;
+}
+.about__title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.about__text {
+  line-height: 1.5;
+  font-size: 1.125rem;
+}
+.about__img {
+  max-width: 470px;
+}
+
+.commitment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6.25rem;
+  padding: 12.5rem 3.125rem;
+  background-color: #f3f4fd;
+}
+.commitment__container {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+  max-width: 50ch;
+}
+.commitment__title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.commitment__text {
+  line-height: 1.5;
+  font-size: 1.125rem;
+}
+.commitment__img {
+  order: 0;
+  max-width: 370px;
 }/*# sourceMappingURL=styles.css.map */
