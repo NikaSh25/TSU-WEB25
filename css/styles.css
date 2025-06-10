@@ -39,6 +39,7 @@ ul {
   padding: 1rem 0;
   gap: 5.625rem;
   background-color: white;
+  border-bottom: 3px solid #f3f4fd;
   z-index: 1000;
 }
 @media screen and (max-width: 1024px) {

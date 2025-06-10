@@ -39,6 +39,7 @@ ul {
   padding: 1rem 0;
   gap: toRem(90);
   background-color: white;
+  border-bottom: 3px solid $secondary-background-color;
   z-index: 1000;
   &__nav {
     @media screen and (max-width: 1024px) {
