@@ -882,4 +882,98 @@ ul {
 .footer__social-img {
   width: 25px;
   height: 25px;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5rem;
+  gap: 12.5rem;
+}
+.login-page__container {
+  display: flex;
+  flex-direction: column;
+  gap: 6.25rem;
+  padding: 1.25rem;
+}
+@media screen and (max-width: 480px) {
+  .login-page__container {
+    max-width: 360px;
+    padding: 0.625rem;
+  }
+}
+.login-page__title {
+  font-size: 2.5rem;
+}
+.login-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.login-page__label {
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.625rem 6.25rem 0.3125rem 0.625rem;
+  border: 1px solid #5f6c76;
+  border-radius: 10px;
+  position: relative;
+}
+.login-page__label:hover {
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(95, 45, 237, 0.5);
+  transition: box-shadow 0.3s ease-in;
+}
+.login-page__toggle-visibility {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 100;
+  background: none;
+  border: none;
+  transform: translate(-50%, 75%);
+  cursor: pointer;
+}
+.login-page__toggle-img {
+  min-width: 25px;
+}
+.login-page__email {
+  border: none;
+  padding: 0.3125rem 6.25rem 0.3125rem 0.3125rem;
+}
+.login-page__email:focus, .login-page__email:hover {
+  outline: none;
+}
+.login-page__password {
+  border: none;
+  padding: bottom;
+  padding: 0.3125rem 6.25rem 0.3125rem 0.3125rem;
+}
+.login-page__password:focus, .login-page__password:hover {
+  outline: none;
+}
+.login-page__btn {
+  background: #5f2ded;
+  color: white;
+  padding: 1.25rem;
+  border: none;
+  font-weight: bold;
+  font-size: 1.25rem;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.login-page__register:visited, .login-page__register:link {
+  color: #f2277e;
+  font-weight: bold;
+}
+.login-page__register:hover, .login-page__register:active {
+  color: #5f2ded;
+  transition: color 0.3s ease-in;
+}
+@media screen and (max-width: 1024px) {
+  .login-page__image {
+    display: none;
+  }
 }/*# sourceMappingURL=styles.css.map */
