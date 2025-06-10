@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | SkillBoost</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="images/header/Logo.png" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="contact-hero">
+        <h2 class="contact-hero__title">Contact</h2>
+        <p class="contact-hero__text">
+          We're here to help and answer any question you might have. We look
+          forward to hearing from you.
+        </p>
+      </section>
+      <section class="contact-info">
+        <ul class="contact-info__list">
+          <li class="contact-info__item">
+            <a href="mailto:someone@example.com" class="contact-info__link">
+              <img src="images/contact/mail-icon.svg" alt="Email Icon" />
+              <div class="contact-info__wrapper">
+                <p class="contact-info__title">Email Address</p>
+                <p class="contact-info__details">someone@example.com</p>
+              </div>
+            </a>
+          </li>
+          <li class="contact-info__item">
+            <a
+              target="_blank"
+              href="https://maps.app.goo.gl/R8okTVEmCNByq6Ta7"
+              class="contact-info__link"
+            >
+              <img src="images/contact/location-Icon.svg" alt="Email Icon" />
+              <div class="contact-info__wrapper">
+                <p class="contact-info__title">Address</p>
+                <p class="contact-info__details">TSU Ganivi</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="contact-info__item">
+            <a href="tel:+123-fake-123" class="contact-info__link">
+              <img src="images/contact/phone-icon.svg" alt="Email Icon" />
+              <div class="contact-info__wrapper">
+                <p class="contact-info__title">Phone</p>
+                <p class="contact-info__details">+123-fake-123</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="contact-us">
+        <form class="contact-us__form">
+          <legend class="contact-us__title">Contact Us</legend>
+          <input
+            class="contact-us__input"
+            type="text"
+            name="firstname"
+            placeholder="Your name.."
+            required
+          />
+          <input
+            class="contact-us__input"
+            type="email"
+            name="email"
+            placeholder="Your email.."
+            required
+          />
+          <input
+            class="contact-us__input"
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            required
+          />
+          <textarea
+            class="contact-us__input contact-us__input--height"
+            name="message"
+            placeholder="Write something.."
+            required
+          ></textarea>
+          <input class="contact-us__button" type="submit" value="Submit" />
+        </form>
+      </section>
+    </main>
+    <footer></footer>
+    <!-- <script src="/js/script.js"></script> -->
+    <script src="/js/login.js"></script>
+  </body>
+</html>
