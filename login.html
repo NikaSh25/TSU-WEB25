@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | SkillBoost</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="images/header/Logo.png" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="login-page">
+        <div class="login-page__container">
+          <h2 class="login-page__title">Log in</h2>
+          <form class="login-page__form">
+            <label class="login-page__label"
+              >Email
+              <input
+                type="email"
+                class="login-page__input"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </label>
+            <label class="login-page__label"
+              >Password
+              <input
+                type="password"
+                class="login-page__input"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+              <button type="button" class="login-page__toggle-visibility">
+                <img
+                  src="images/login/eye-slash.svg"
+                  alt="Eye closed"
+                  class="login-page__toggle-img"
+                />
+              </button>
+            </label>
+            <button type="submit" class="login-page__btn">Log in</button>
+          </form>
+          <p class="login-page__signup">
+            Don't have an account?
+            <a class="login-page__register" href="register.html">Sign up</a>
+          </p>
+        </div>
+        <img
+          src="images/login/login-book-image.png"
+          alt="Book image"
+          class="login-page__image"
+        />
+      </section>
+    </main>
+    <footer></footer>
+    <!-- <script src="/js/script.js"></script> -->
+    <script src="/js/login.js"></script>
+  </body>
+</html>
