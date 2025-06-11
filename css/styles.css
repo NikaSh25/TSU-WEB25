@@ -1121,7 +1121,7 @@ ul {
   background-color: #f3f4fd;
 }
 .commitment__container {
-  order: 1;
+  order: 2;
   display: flex;
   flex-direction: column;
   gap: 3.125rem;
@@ -1136,7 +1136,7 @@ ul {
   font-size: 1.125rem;
 }
 .commitment__img {
-  order: 0;
+  order: 1;
   max-width: 370px;
 }
 
@@ -1148,6 +1148,7 @@ ul {
   gap: 12.5rem;
 }
 .sign-up__container {
+  order: 2;
   display: flex;
   flex-direction: column;
   gap: 6.25rem;
@@ -1225,6 +1226,200 @@ ul {
 }
 @media screen and (max-width: 1024px) {
   .sign-up__image {
+    display: none;
+  }
+}
+
+.blog-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5rem 3.125rem;
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: 2.5rem;
+  position: relative;
+}
+.blog-hero__title {
+  font-size: 3.4375rem;
+}
+.blog-hero__text {
+  color: #5f6c76;
+  width: 40ch;
+}
+
+.blogs {
+  display: flex;
+  justify-content: center;
+  padding: 6.25rem 3.125rem;
+  gap: 6.25rem;
+}
+@media screen and (max-width: 1024px) {
+  .blogs {
+    gap: 1.25rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .blogs {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.blogs__container {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .blogs__container {
+    order: 2;
+  }
+}
+.blogs__no-results {
+  font-weight: bold;
+  color: #5f6c76;
+  font-size: 3.75rem;
+  justify-self: center;
+}
+.blogs__no-results--hidden {
+  display: none;
+}
+.blogs__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.blogs__item--hidden {
+  display: none;
+}
+.blogs__link {
+  color: inherit;
+  transition: box-shadow 1s ease-in;
+}
+.blogs__link:hover, .blogs__link:active {
+  cursor: pointer;
+  color: inherit;
+  box-shadow: 0 0 20px rgba(95, 45, 237, 0.5);
+}
+.blogs__name {
+  font-size: 1.375rem;
+  color: black;
+  align-self: flex-start;
+}
+.blogs__text {
+  color: #5f6c76;
+}
+.blogs__card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 480px;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.4);
+  padding: 2.1875rem;
+}
+@media screen and (max-width: 480px) {
+  .blogs__card {
+    max-width: 375px;
+  }
+}
+.blogs__card--hidden {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .blogs__card {
+    gap: 1.25rem;
+  }
+}
+.blogs__details {
+  color: #5f6c76;
+  display: flex;
+  align-self: flex-start;
+  gap: 1.25rem;
+}
+.blogs__image {
+  max-width: 440px;
+}
+@media screen and (max-width: 480px) {
+  .blogs__image {
+    max-width: 300px;
+  }
+}
+.blogs__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5625rem;
+}
+.blogs__search-form {
+  display: flex;
+  flex-direction: column;
+  width: 18.75rem;
+  padding: 1.25rem;
+  border: 1px solid #dddddd;
+  gap: 1.25rem;
+}
+.blogs__search-wrapper {
+  display: flex;
+  align-items: center;
+}
+.blogs__search-label {
+  font-size: 1.25rem;
+  color: #5f6c76;
+  font-weight: bold;
+  margin: 0.3125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.blogs__search-input {
+  width: 80%;
+  border: none;
+  background: #f5f5fe;
+  padding: 0.625rem;
+  outline: none;
+}
+.blogs__search-submit {
+  flex: 1;
+  padding: 0.3125rem;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.blogs__gallery {
+  width: 300px;
+  border: 1px solid #dddddd;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  gap: 0.9375rem;
+}
+.blogs__gallery-title {
+  font-size: 1.25rem;
+  color: #5f6c76;
+}
+.blogs__gallery-title::before {
+  content: "|";
+  color: #5f2ded;
+  position: absolute;
+  transform: translate(-150%, -10%);
+}
+.blogs__gallery-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  background-color: white;
+  align-items: center;
+  justify-items: center;
+  gap: 0.625rem;
+}
+.blogs__gallery-img {
+  max-width: 80px;
+}
+@media screen and (max-width: 480px) {
+  .blogs__gallery {
     display: none;
   }
 }/*# sourceMappingURL=styles.css.map */

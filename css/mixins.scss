@@ -46,3 +46,23 @@
   background-color: #e7deff;
   font-weight: bold;
 }
+
+@mixin secondary-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: toRem(200) toRem(50);
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: toRem(40);
+  position: relative;
+  &__title {
+    font-size: toRem(55);
+  }
+  &__text {
+    color: $sub-color;
+    width: 40ch;
+  }
+}
