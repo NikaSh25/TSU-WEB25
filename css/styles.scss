@@ -22,7 +22,6 @@ a:visited {
 a:hover,
 a:active {
   color: $main-color;
-  @include transition(color, 0.15s, ease-in);
 }
 
 ul {
@@ -332,7 +331,6 @@ ul {
     gap: 30px;
     justify-content: center;
     align-items: center;
-    background-color: #f3f4fd;
     @media screen and (max-width: 1366px) {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
@@ -655,10 +653,12 @@ ul {
     color: $sub-color;
     @include transition(box-shadow, 1s, ease-in);
     @include transition(color, 1s, ease-in-out);
+    @include transition(transform, 0.3s, ease-in);
     &:hover,
     &:active {
       cursor: pointer;
-      @include shadow(0, 0, 20px, rgba(95, 45, 237, 0.5));
+      @include shadow(0, 0, 20px, rgba(0, 0, 0, 0.5));
+      transform: translateY(-15px);
     }
   }
   &__title {
@@ -822,6 +822,7 @@ ul {
       gap: toRem(20);
     }
     &-link {
+      @include transition(color, 0.15s, ease-in);
       &:link,
       &:visited {
         color: $footer-color;
@@ -829,7 +830,6 @@ ul {
       &:hover,
       &:active {
         color: $main-color;
-        @include transition(color, 0.15s, ease-in);
       }
     }
     @media screen and (max-width: 480px) {
@@ -887,10 +887,10 @@ ul {
     border: 1px solid $sub-color;
     border-radius: 10px;
     position: relative;
+    @include transition(box-shadow, 0.3s, ease-in);
     &:hover {
       cursor: pointer;
       @include shadow(0, 0, 12px, rgba(95, 45, 237, 0.5));
-      @include transition(box-shadow, 0.3s, ease-in);
     }
   }
   &__toggle-visibility {
@@ -925,6 +925,8 @@ ul {
     cursor: pointer;
   }
   &__register {
+    @include transition(color, 0.3s, ease-in);
+
     &:visited,
     &:link {
       color: $secondary-color;
@@ -933,7 +935,6 @@ ul {
     &:hover,
     &:active {
       color: $main-color;
-      @include transition(color, 0.3s, ease-in);
     }
   }
   &__image {
@@ -966,10 +967,12 @@ ul {
     width: 300px;
     align-items: center;
     @include shadow(0, 0px, 8px, rgba(0, 0, 0, 0.2));
+    @include transition(box-shadow, 0.2s, ease-in);
+    @include transition(transform, 0.3s, ease-in);
     &:hover,
     &:active {
       @include shadow(0, 0px, 24px, rgba(0, 0, 0, 0.4));
-      @include transition(box-shadow, 0.2s, ease-in);
+      transform: translateY(-10px);
     }
   }
   &__wrapper {
@@ -1115,10 +1118,11 @@ ul {
     border: 1px solid $sub-color;
     border-radius: 10px;
     position: relative;
+    @include transition(box-shadow, 0.3s, ease-in);
+
     &:hover {
       cursor: pointer;
       @include shadow(0, 0, 12px, rgba(95, 45, 237, 0.5));
-      @include transition(box-shadow, 0.3s, ease-in);
     }
   }
   &__toggle-visibility {
@@ -1153,7 +1157,9 @@ ul {
     border-radius: 15px;
     cursor: pointer;
   }
-  &__register {
+  &__login {
+    @include transition(color, 0.3s, ease-in);
+
     &:visited,
     &:link {
       color: $secondary-color;
@@ -1162,7 +1168,6 @@ ul {
     &:hover,
     &:active {
       color: $main-color;
-      @include transition(color, 0.3s, ease-in);
     }
   }
   &__image {
@@ -1343,4 +1348,138 @@ ul {
       display: none;
     }
   }
+}
+
+.courses {
+  display: flex;
+  justify-content: center;
+  padding: toRem(150);
+  gap: toRem(25);
+  @media screen and (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
+}
+.courses-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: toRem(15);
+  &__search {
+    &-form {
+      display: flex;
+      flex-direction: column;
+      width: toRem(300);
+      padding: toRem(20);
+      border: 1px solid #dddddd;
+      gap: toRem(20);
+    }
+    &-wrapper {
+      display: flex;
+      align-items: center;
+    }
+    &-label {
+      font-size: toRem(20);
+      color: $sub-color;
+      font-weight: bold;
+      margin: toRem(5);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    &-input {
+      width: 80%;
+      border: none;
+      padding: toRem(10);
+      outline: none;
+    }
+    &-submit {
+      flex: 1;
+      padding: toRem(5);
+      background-color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    width: toRem(300);
+    padding: toRem(20);
+    border: 1px solid #dddddd;
+    gap: toRem(20);
+  }
+  &__tags {
+    font-size: toRem(20);
+    color: $sub-color;
+    font-weight: bold;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+  }
+  &__filter-btn {
+    background-color: white;
+    border: none;
+    font-size: toRem(14);
+    color: $sub-color;
+    font-weight: bold;
+    border-bottom: 4px solid transparent;
+    @include transition(border-color, 0.2s, ease);
+    &:hover,
+    &:active {
+      cursor: pointer;
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+    &--active {
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+  }
+}
+
+.courses-grid {
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: toRem(15);
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1366px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+    }
+    @media screen and (max-width: 720px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+    }
+  }
+  &__no-results {
+    font-weight: bold;
+    color: $sub-color;
+    font-size: toRem(60);
+    justify-self: center;
+    &--hidden {
+      display: none;
+    }
+  }
+  &__item {
+    @include transition(box-shadow, 0.2s, ease-in);
+    &:hover,
+    &:active {
+      @include shadow(0, 0, 12px, rgba(95, 45, 237, 0.5));
+    }
+    &--hidden {
+      display: none;
+    }
+  }
+}
+
+.courses-hero {
+  @include secondary-hero;
 }

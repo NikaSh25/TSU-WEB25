@@ -22,7 +22,6 @@ a:visited {
 a:hover,
 a:active {
   color: #5f2ded;
-  transition: color 0.15s ease-in;
 }
 
 ul {
@@ -333,7 +332,6 @@ ul {
   gap: 30px;
   justify-content: center;
   align-items: center;
-  background-color: #f3f4fd;
 }
 @media screen and (max-width: 1366px) {
   .course-list__cards {
@@ -685,10 +683,12 @@ ul {
   color: #5f6c76;
   transition: box-shadow 1s ease-in;
   transition: color 1s ease-in-out;
+  transition: transform 0.3s ease-in;
 }
 .news-blog__link:hover, .news-blog__link:active {
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(95, 45, 237, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-15px);
 }
 .news-blog__title {
   font-size: 2.75rem;
@@ -856,12 +856,14 @@ ul {
   flex-direction: column;
   gap: 1.25rem;
 }
+.footer__nav-link {
+  transition: color 0.15s ease-in;
+}
 .footer__nav-link:link, .footer__nav-link:visited {
   color: #9fa2ce;
 }
 .footer__nav-link:hover, .footer__nav-link:active {
   color: #5f2ded;
-  transition: color 0.15s ease-in;
 }
 @media screen and (max-width: 480px) {
   .footer__nav {
@@ -920,11 +922,11 @@ ul {
   border: 1px solid #5f6c76;
   border-radius: 10px;
   position: relative;
+  transition: box-shadow 0.3s ease-in;
 }
 .login-page__label:hover {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(95, 45, 237, 0.5);
-  transition: box-shadow 0.3s ease-in;
 }
 .login-page__toggle-visibility {
   position: absolute;
@@ -956,13 +958,15 @@ ul {
   border-radius: 15px;
   cursor: pointer;
 }
+.login-page__register {
+  transition: color 0.3s ease-in;
+}
 .login-page__register:visited, .login-page__register:link {
   color: #f2277e;
   font-weight: bold;
 }
 .login-page__register:hover, .login-page__register:active {
   color: #5f2ded;
-  transition: color 0.3s ease-in;
 }
 @media screen and (max-width: 1024px) {
   .login-page__image {
@@ -1010,10 +1014,12 @@ ul {
   width: 300px;
   align-items: center;
   box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease-in;
+  transition: transform 0.3s ease-in;
 }
 .contact-info__link:hover, .contact-info__link:active {
   box-shadow: 0 0px 24px rgba(0, 0, 0, 0.4);
-  transition: box-shadow 0.2s ease-in;
+  transform: translateY(-10px);
 }
 .contact-info__wrapper {
   display: flex;
@@ -1177,11 +1183,11 @@ ul {
   border: 1px solid #5f6c76;
   border-radius: 10px;
   position: relative;
+  transition: box-shadow 0.3s ease-in;
 }
 .sign-up__label:hover {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(95, 45, 237, 0.5);
-  transition: box-shadow 0.3s ease-in;
 }
 .sign-up__toggle-visibility {
   position: absolute;
@@ -1213,13 +1219,15 @@ ul {
   border-radius: 15px;
   cursor: pointer;
 }
-.sign-up__register:visited, .sign-up__register:link {
+.sign-up__login {
+  transition: color 0.3s ease-in;
+}
+.sign-up__login:visited, .sign-up__login:link {
   color: #f2277e;
   font-weight: bold;
 }
-.sign-up__register:hover, .sign-up__register:active {
+.sign-up__login:hover, .sign-up__login:active {
   color: #5f2ded;
-  transition: color 0.3s ease-in;
 }
 .sign-up__image {
   max-width: 600px;
@@ -1422,4 +1430,154 @@ ul {
   .blogs__gallery {
     display: none;
   }
+}
+
+.courses {
+  display: flex;
+  justify-content: center;
+  padding: 9.375rem;
+  gap: 1.5625rem;
+}
+@media screen and (max-width: 1024px) {
+  .courses {
+    flex-wrap: wrap;
+  }
+}
+
+.courses-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9375rem;
+}
+.courses-filters__search-form {
+  display: flex;
+  flex-direction: column;
+  width: 18.75rem;
+  padding: 1.25rem;
+  border: 1px solid #dddddd;
+  gap: 1.25rem;
+}
+.courses-filters__search-wrapper {
+  display: flex;
+  align-items: center;
+}
+.courses-filters__search-label {
+  font-size: 1.25rem;
+  color: #5f6c76;
+  font-weight: bold;
+  margin: 0.3125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.courses-filters__search-input {
+  width: 80%;
+  border: none;
+  padding: 0.625rem;
+  outline: none;
+}
+.courses-filters__search-submit {
+  flex: 1;
+  padding: 0.3125rem;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.courses-filters__categories {
+  display: flex;
+  flex-direction: column;
+  width: 18.75rem;
+  padding: 1.25rem;
+  border: 1px solid #dddddd;
+  gap: 1.25rem;
+}
+.courses-filters__tags {
+  font-size: 1.25rem;
+  color: #5f6c76;
+  font-weight: bold;
+}
+.courses-filters__filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.courses-filters__filter-btn {
+  background-color: white;
+  border: none;
+  font-size: 0.875rem;
+  color: #5f6c76;
+  font-weight: bold;
+  border-bottom: 4px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.courses-filters__filter-btn:hover, .courses-filters__filter-btn:active {
+  cursor: pointer;
+  color: #5f2ded;
+  font-weight: bold;
+  border-bottom: 4px solid #5f2ded;
+}
+.courses-filters__filter-btn--active {
+  color: #5f2ded;
+  font-weight: bold;
+  border-bottom: 4px solid #5f2ded;
+}
+
+.courses-grid__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0.9375rem;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 1366px) {
+  .courses-grid__cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+}
+@media screen and (max-width: 720px) {
+  .courses-grid__cards {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+}
+.courses-grid__no-results {
+  font-weight: bold;
+  color: #5f6c76;
+  font-size: 3.75rem;
+  justify-self: center;
+}
+.courses-grid__no-results--hidden {
+  display: none;
+}
+.courses-grid__item {
+  transition: box-shadow 0.2s ease-in;
+}
+.courses-grid__item:hover, .courses-grid__item:active {
+  box-shadow: 0 0 12px rgba(95, 45, 237, 0.5);
+}
+.courses-grid__item--hidden {
+  display: none;
+}
+
+.courses-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5rem 3.125rem;
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: 2.5rem;
+  position: relative;
+}
+.courses-hero__title {
+  font-size: 3.4375rem;
+}
+.courses-hero__text {
+  color: #5f6c76;
+  width: 40ch;
 }/*# sourceMappingURL=styles.css.map */
