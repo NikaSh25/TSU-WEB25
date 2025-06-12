@@ -743,66 +743,6 @@ ul {
   max-width: 42px;
 }
 
-.support {
-  background-color: #0c0e2b;
-  padding: 3.125rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 3.125rem;
-}
-.support__heading {
-  display: flex;
-  flex-direction: column;
-  gap: 1.875rem;
-}
-.support__title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #fff;
-}
-.support__title--purple {
-  color: #5f2ded;
-}
-.support__text {
-  color: #5f6c76;
-  font-weight: 600;
-}
-.support__form {
-  padding-left: 3.125rem;
-}
-@media screen and (max-width: 480px) {
-  .support__form {
-    padding-left: 0;
-  }
-}
-.support__input {
-  background-color: #202942;
-  border: none;
-  color: hsl(0, 0%, 100%);
-  padding: 1.25rem;
-  max-width: 26.25rem;
-  min-width: 20rem;
-}
-@media screen and (max-width: 480px) {
-  .support__input {
-    min-width: 12.5rem;
-  }
-}
-.support__btn {
-  background-color: #5f2ded;
-  border: none;
-  padding: 1.25rem;
-  color: white;
-  cursor: pointer;
-}
-@media screen and (max-width: 480px) {
-  .support__btn--responsive {
-    display: none;
-  }
-}
-
 .footer {
   background-color: #0c0e2b;
   padding: 3.125rem;
@@ -1428,7 +1368,7 @@ ul {
 .blogs__search-input {
   width: 80%;
   border: none;
-  background: #f5f5fe;
+  background: hsl(240, 82%, 98%);
   padding: 0.625rem;
   outline: none;
 }
@@ -1859,4 +1799,45 @@ ul {
 }
 .dashboard-profile__msg {
   color: #5f6c76;
+}
+
+.post {
+  padding: 3.125rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.post__name {
+  font-size: 1.875rem;
+  margin-bottom: 1rem;
+}
+.post__image {
+  padding: 3.125rem 3.125rem 0 3.125rem;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin-bottom: 2rem;
+}
+@media screen and (max-width: 480px) {
+  .post__image {
+    max-width: 300;
+  }
+}
+.post__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+.post__text {
+  max-width: 100ch;
+  line-height: 1.6;
+  font-size: 1.25rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  text-align: left;
 }/*# sourceMappingURL=styles.css.map */

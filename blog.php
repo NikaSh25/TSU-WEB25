@@ -21,73 +21,33 @@
     </section>
     <section class="blogs">
       <div class="blogs__container">
+        <?php
+        $postsJson = file_get_contents(__DIR__ . '/blogs/posts.json');
+        $posts = json_decode($postsJson, true);
+        ?>
         <ul class="blogs__list">
-          <li class="blogs__item">
-            <a href="#" class="blogs__link">
-              <article class="blogs__card">
-                <img
-                  class="blogs__image"
-                  src="images/homepage/news-blogs/start-up.png"
-                  alt="Girl presenting start up project" />
-                <div class="blogs__details">
-                  <p class="blogs__author-name">By John Doe</p>
-                  <time class="blogs__author-date" datetime="2025-06-10">2025-06-10</time>
-                </div>
-                <h3 class="blogs__name">
-                  We are helping our community with Starting
-                </h3>
-                <p class="blogs__text">
-                  We have covered many special events such as fireworks,
-                  fairs, parades, races, walks, awards ceremonies, fashion
-                  shows, sporting events, and even a memorial service. Lorem
-                  ipsum dolor sit amet,...
-                </p>
-              </article>
-            </a>
-          </li>
-          <li class="blogs__item">
-            <a class="blogs__link">
-              <article class="blogs__card">
-                <img
-                  class="blogs__image"
-                  src="images/homepage/news-blogs/random-text.jpg"
-                  alt="random lorem ipsum text" />
-                <div class="blogs__details">
-                  <p class="blogs__author-name">By John Doe</p>
-                  <time class="blogs__author-date" datetime="2025-06-10">2025-06-10</time>
-                </div>
-                <h3 class="blogs__name">Lorem ipsum the origins</h3>
-                <p class="blogs__text">
-                  Lorem ipsum dolor sit amet,... Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Hic asperiores omnis
-                  architecto exercitationem...
-                </p>
-              </article>
-            </a>
-          </li>
-          <li class="blogs__item">
-            <a class="blogs__link">
-              <article class="blogs__card">
-                <img
-                  class="blogs__image"
-                  src="images/homepage/news-blogs/news-blog-consumers-370x222.jpg.png"
-                  alt="boy thinking about consumer feedback" />
-                <div class="blogs__details">
-                  <p class="blogs__author-name">By John Doe</p>
-                  <time class="blogs__author-date" datetime="2025-06-10">2025-06-10</time>
-                </div>
-                <h3 class="blogs__name">
-                  Delivering what consumers really want?
-                </h3>
-                <p class="blogs__text">
-                  We have covered many special events such as fireworks,
-                  fairs, parades, races, walks, awards ceremonies, fashion
-                  shows, sporting events, and even a memorial service. Lorem
-                  ipsum dolor sit amet,...
-                </p>
-              </article>
-            </a>
-          </li>
+          <?php foreach ($posts as $post): ?>
+            <li class="blogs__item">
+              <a href="blogpost.php?slug=<?php echo urlencode($post['slug']); ?>" class="blogs__link">
+                <article class="blogs__card">
+                  <img
+                    class="blogs__image"
+                    src="<?php echo htmlspecialchars($post['image']); ?>"
+                    alt="<?php echo htmlspecialchars($post['alt']); ?>" />
+                  <div class="blogs__details">
+                    <p class="blogs__author-name">By <?php echo htmlspecialchars($post['author']); ?></p>
+                    <time class="blogs__author-date" datetime="<?php echo htmlspecialchars($post['date']); ?>">
+                      <?php echo htmlspecialchars($post['date']); ?>
+                    </time>
+                  </div>
+                  <h3 class="blogs__name"><?php echo htmlspecialchars($post['title']); ?></h3>
+                  <p class="blogs__text">
+                    <?php echo htmlspecialchars(substr($post['content'], 0, 150)) . '...'; ?>
+                  </p>
+                </article>
+              </a>
+            </li>
+          <?php endforeach; ?>
         </ul>
         <p class="blogs__no-results blogs__no-results--hidden">
           No posts found.

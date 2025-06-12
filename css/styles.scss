@@ -714,62 +714,6 @@ ul {
   }
 }
 
-.support {
-  background-color: $footer-bg-color;
-  padding: toRem(50);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: toRem(50);
-  &__heading {
-    display: flex;
-    flex-direction: column;
-    gap: toRem(30);
-  }
-  &__title {
-    font-size: toRem(40);
-    font-weight: bold;
-    color: #fff;
-    &--purple {
-      color: $main-color;
-    }
-  }
-  &__text {
-    color: $sub-color;
-    font-weight: 600;
-  }
-  &__form {
-    padding-left: toRem(50);
-    @media screen and (max-width: 480px) {
-      padding-left: 0;
-    }
-  }
-  &__input {
-    background-color: #202942;
-    border: none;
-    color: hsl(0, 0%, 100%);
-    padding: toRem(20);
-    max-width: toRem(420);
-    min-width: toRem(320);
-    @media screen and (max-width: 480px) {
-      min-width: toRem(200);
-    }
-  }
-  &__btn {
-    background-color: $main-color;
-    border: none;
-    padding: toRem(20);
-    color: white;
-    cursor: pointer;
-    &--responsive {
-      @media screen and (max-width: 480px) {
-        display: none;
-      }
-    }
-  }
-}
-
 .footer {
   background-color: $footer-bg-color;
   padding: toRem(50);
@@ -1744,5 +1688,44 @@ ul {
   }
   &__msg {
     color: $sub-color;
+  }
+}
+
+.post {
+  padding: toRem(50) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  &__name {
+    font-size: toRem(30);
+    margin-bottom: toRem(16);
+  }
+  &__image {
+    padding: toRem(50) toRem(50) 0 toRem(50);
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin-bottom: toRem(32);
+    @media screen and (max-width: 480px) {
+      max-width: 300;
+    }
+  }
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: toRem(20);
+    justify-content: center;
+    margin-bottom: toRem(32);
+    font-size: toRem(14);
+  }
+  &__text {
+    max-width: 100ch;
+    line-height: 1.6;
+    font-size: toRem(20);
+    padding: 0 toRem(24);
+    margin: 0 auto;
+    text-align: left;
   }
 }

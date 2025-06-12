@@ -462,26 +462,7 @@
       </div>
     </section>
   </main>
-  <section class="support">
-    <div class="support__heading">
-      <h2 class="support__title">
-        Still You Need Our
-        <span class="support__title--purple">Support?</span>
-      </h2>
-      <p class="support__text">
-        Leave your email and we will contact you ASAP.
-      </p>
-    </div>
-    <form class="support__form">
-      <input
-        class="support__input"
-        type="email"
-        placeholder="Enter your email here" />
-      <button class="support__btn" type="submit">
-        Send <span class="support__btn--responsive">Email</span>
-      </button>
-    </form>
-  </section>
+
 
   <?php require_once 'php/footer.php'; ?>
 
