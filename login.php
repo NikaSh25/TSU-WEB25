@@ -50,6 +50,7 @@
       $_SESSION['lastName'] = $userData['last_name'];
       $_SESSION['userEmail'] = $email;
       $_SESSION['success_message'] = "Login Successful!";
+      $_SESSION['memberSince'] = $userData['member_since'];
       session_regenerate_id(true);
       header('Location: dashboard.php');
       exit();

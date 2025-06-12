@@ -3,5 +3,6 @@
     "last_name": "testUser",
     "birthday": "1960-12-12",
     "email": "test@user.com",
-    "password": "$2y$10$wQD\/9a23I5I8BQ0XoKyBAOPSLMDW7AfEo2FiF6FB3fvil4vfJbA8O"
+    "member_since": "2025-06-12",
+    "password": "$2y$10$M2BT81CH6fKomTRMVthSSuCsyz.FvNnla7RrefsKWL0tzWOeNGyeW"
 }

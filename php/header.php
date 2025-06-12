@@ -29,7 +29,7 @@
                   <li>
                       <a
                           href="dashboard.php"
-                          class="header__nav-link">DashBoard</a>
+                          class="header__nav-link">Dashboard</a>
                   </li>
                   <li>
                       <a

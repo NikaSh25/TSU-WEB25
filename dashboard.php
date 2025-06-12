@@ -18,6 +18,7 @@
     if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         header('Location: login.php');
     }
+    $newFileName = str_replace(['@', '.'], ['_at_', '_dot_'], strtolower($_SESSION['userEmail'])) . '.jpg';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploadedfile'])) {
         $fileName = $_FILES['uploadedfile']['name'];
@@ -37,8 +38,6 @@
         } elseif ($fileSize > 5000000) {
             $message = "File size must not exceed 5MB.";
         } else {
-            $extension = pathinfo($fileName, PATHINFO_EXTENSION);
-            $newFileName = str_replace(['@', '.'], ['_at_', '_dot_'], strtolower($_SESSION['userEmail'])) . '.' . $extension;
             $uploadFilePath = $uploadDir . $newFileName;
 
             if (move_uploaded_file($fileTmpName, $uploadFilePath)) {
@@ -46,9 +45,6 @@
             } else {
                 $message = "Failed to move uploaded file.";
             }
-        }
-        if (isset($message)) {
-            echo "<p>$message</p>";
         }
     }
 
@@ -75,14 +71,12 @@
             <h3 class="dashboard-hero__text">Welcome Back <span class="dashboard-hero__text--red"><?php echo $_SESSION['firstName'] ?>!</span></h3>
         </section>
         <div class="dashboard-wrapper">
-            <aside class="dashboard-sidebar">
-                <nav class="dashboard-sidebar__nav">
-                    <ul class="dashboard-sidebar__list">
-                        <li class="dashboard-sidebar__item"><button type="button" class="dashboard-sidebar__btn">My Courses</button></li>
-                        <li class="dashboard-sidebar__item"><button type="button" class="dashboard-sidebar__btn">Profile</button></li>
-                    </ul>
-                </nav>
-            </aside>
+            <nav class="dashboard-nav">
+                <ul class="dashboard-nav__list">
+                    <li class="dashboard-nav__item"><button type="button" class="dashboard-nav__btn dashboard-nav__btn--active">My Courses</button></li>
+                    <li class="dashboard-nav__item"><button type="button" class="dashboard-nav__btn">Profile</button></li>
+                </ul>
+            </nav>
             <section class="dashboard-courses">
                 <ul class="dashboard-courses__cards">
                     <li class="dashboard-courses__item">
@@ -195,17 +189,33 @@
             </section>
             <section class="dashboard-profile dashboard-profile--hidden">
                 <div class="dashboard-profile__image-wrapper">
-                    <img class="dashboard-profile__image-wrapper" src="" alt="">
+                    <?php if (file_exists('uploads/' . $newFileName)): ?>
+                        <img class="dashboard-profile__image" src="<?php echo 'uploads/' . $newFileName; ?>" alt="Profile image">
+                    <?php else: ?>
+                        <img class="dashboard-profile__image" src="images/misc/placeholder.svg" alt="Profile image">
+                    <?php endif; ?>
+
                     <form class="dashboard-profile__form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                         <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                        <label for="file">Upload Image:</label>
-                        <input name="uploadedfile" type="file" id="file" accept="image/jpeg" />
-                        <input type="submit" value="Submit" />
+                        <label class="dashboard-profile__label" for="file">Upload Image</label>
+                        <input class="dashboard-profile__upload" name="uploadedfile" type="file" id="file" accept="image/jpeg" />
+                        <input class="dashboard-profile__submit" type="submit" value="Submit" />
                     </form>
+                </div>
+                <div class="dashboard-profile__information">
+                    <h4 class="dashboard-profile__title">Your Info:</h4>
+                    <ul class="dashboard-profile__list">
+                        <li class="dashboard-profile__item">Name: <?php echo htmlspecialchars($_SESSION['firstName']) . " " . htmlspecialchars($_SESSION['lastName']); ?></li>
+                        <li class="dashboard-profile__item">Email: <?php echo htmlspecialchars($_SESSION['userEmail']); ?></li>
+                        <li class="dashboard-profile__item">Member Since: <br> <?php echo htmlspecialchars($_SESSION['memberSince']); ?></li>
+                    </ul>
+                    <p class="dashboard-profile__msg">We are happy to have you as a member! <br> We hope you enjoy your time with us.</p>
                 </div>
             </section>
         </div>
     </main>
+    <?php require_once 'php/footer.php' ?>
+
     <script src="js/script.js"></script>
     <script src="js/dashboard.js"></script>
 </body>

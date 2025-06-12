@@ -18,6 +18,11 @@
   if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     header('Location: dashboard.php');
   }
+  $registerError = '';
+  if (isset($_SESSION['register_error'])) {
+    $registerError = $_SESSION['register_error'];
+    unset($_SESSION['register_error']);
+  }
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fname = trim($_POST["fname"]);
     $lname = trim($_POST["lname"]);
@@ -54,6 +59,7 @@
       'last_name' => $lname,
       'birthday' => $birthday,
       'email' => $email,
+      'member_since' => $currDate->format('Y-m-d'),
       'password' => $hashedPassword
     ];
 
@@ -61,7 +67,9 @@
 
     $filepath = __DIR__ . "/users/{$fileName}.json";
     if (file_exists($filepath)) {
-      exit("User Already Exists");
+      $_SESSION['register_error'] = "User already exists.";
+      header('Location: register.php');
+      exit();
     }
 
     $jsonData = json_encode($userData, JSON_PRETTY_PRINT);
@@ -133,6 +141,9 @@
             </button>
           </label>
           <button type="submit" class="sign-up__btn">Sign up</button>
+          <?php if (!empty($registerError)): ?>
+            <p class="sign-up__error sign-up__error--big"><?= htmlspecialchars($registerError) ?></p>
+          <?php endif; ?>
         </form>
         <p class="sign-up__signin">
           Already a member?
