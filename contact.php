@@ -55,7 +55,7 @@
       </ul>
     </section>
     <section class="contact-us">
-      <form class="contact-us__form">
+      <form class="contact-us__form" action="php/process_contact.php" method="POST">
         <legend class="contact-us__title">Contact Us</legend>
         <input
           class="contact-us__input"
@@ -82,6 +82,10 @@
           required></textarea>
         <input class="contact-us__button" type="submit" value="Submit" />
       </form>
+      <?php if (isset($_GET['status']) && isset($_GET['message'])) {
+        $msg = htmlspecialchars($_GET['message']);
+        echo '<p class="contact-us__status">' . $msg . '</p>';
+      } ?>
     </section>
   </main>
   <?php require_once 'php/footer.php' ?>

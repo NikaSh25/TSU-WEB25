@@ -17,6 +17,7 @@
     }
     if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         header('Location: login.php');
+        exit();
     }
     $newFileName = str_replace(['@', '.'], ['_at_', '_dot_'], strtolower($_SESSION['userEmail'])) . '.jpg';
 
@@ -28,7 +29,9 @@
 
         $uploadDir = 'uploads/';
         if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, false);
+            if (!mkdir($uploadDir, 0777, true)) {
+                $message = "Failed to create upload directory.";
+            }
         }
 
         if ($fileError !== UPLOAD_ERR_OK) {
@@ -64,6 +67,24 @@
 
         return $uploadErrors[$errorCode] ?? "Unknown upload error.";
     }
+    if (isset($_GET['reset'])) {
+        setcookie("visit_count", "", time() - 3600);
+        setcookie("last_visit", "", time() - 3600);
+        header("Location: dashboard.php");
+        exit();
+    }
+
+    $current_time = date("Y-m-d H:i:s");
+    if (isset($_COOKIE['visit_count'])) {
+        $visit_count = $_COOKIE['visit_count'] + 1;
+    } else {
+        $visit_count = 1;
+    }
+
+    $last_visit = isset($_COOKIE['last_visit']) ? $_COOKIE['last_visit'] : "First visit!";
+
+    setcookie("visit_count", $visit_count, time() + (30 * 24 * 60 * 60));
+    setcookie("last_visit", $current_time, time() + (30 * 24 * 60 * 60));
     ?>
     <main>
         <section class="dashboard-hero">
@@ -75,117 +96,41 @@
                 <ul class="dashboard-nav__list">
                     <li class="dashboard-nav__item"><button type="button" class="dashboard-nav__btn dashboard-nav__btn--active">My Courses</button></li>
                     <li class="dashboard-nav__item"><button type="button" class="dashboard-nav__btn">Profile</button></li>
+                    <li class="dashboard-nav__item"><button type="button" class="dashboard-nav__btn">Cart</button></li>
                 </ul>
             </nav>
             <section class="dashboard-courses">
                 <ul class="dashboard-courses__cards">
-                    <li class="dashboard-courses__item">
-                        <a href="course-figma.html" class="dashboard-courses__link">
-                            <article class="course-card">
-                                <img
-                                    src="images/homepage/course-images/course-image-2.png"
-                                    alt="Course Image"
-                                    class="course-card__image" />
-                                <div class="course-card__time">
-                                    <span class="course-card__lessons">3 Lessons</span>
-                                    <span class="course-card__duration">2 hours 40 minutes</span>
-                                </div>
-                                <p class="course-card__title">
-                                    Learn Essentials of User Interface Design in Figma
-                                </p>
-                                <p class="course-card__author">John Cena</p>
-                            </article>
-                        </a>
-                    </li>
-                    <li class="dashboard-courses__item">
-                        <a href=" course-designer-skills.html" class="dashboard-courses__link">
-                            <article class="course-card">
-                                <img
-                                    src="images/homepage/course-images/course-image-5.png"
-                                    alt="Course Image"
-                                    class="course-card__image" />
-                                <div class="course-card__time">
-                                    <span class="course-card__lessons">5 Lessons</span>
-                                    <span class="course-card__duration">5 hours 40 minutes</span>
-                                </div>
-                                <p class="course-card__title">
-                                    Designer Essential Skills You Must Need To Know
-                                </p>
-                                <p class="course-card__author">Jonas Schmedtmann</p>
-                            </article>
-                        </a>
-                    </li>
-                    <li class="dashboard-courses__item">
-                        <a href="course-python-dsml.html" class="dashboard-courses__link">
-                            <article class="course-card">
-                                <img
-                                    src="images/homepage/course-images/course-image-3.png"
-                                    alt="Course Image"
-                                    class="course-card__image" />
-                                <div class="course-card__time">
-                                    <span class="course-card__lessons">6 Lessons</span>
-                                    <span class="course-card__duration">12 hours 40 minutes</span>
-                                </div>
-                                <p class="course-card__title">
-                                    Python for Data Science & Machine Learning
-                                </p>
-                                <p class="course-card__author">Jhon Sina</p>
-                            </article>
-                        </a>
-                    </li>
-                    <li class="dashboard-courses__item">
-                        <a href="course-strategy-law.html" class="dashboard-courses__link">
-                            <article class="course-card">
-                                <img
-                                    src="images/homepage/course-images/course-image-1.png"
-                                    alt="Course Image"
-                                    class="course-card__image" />
-                                <div class="course-card__time">
-                                    <span class="course-card__lessons">4 Lessons</span>
-                                    <span class="course-card__duration">5 hours 55 minutes</span>
-                                </div>
-                                <p class="course-card__title">
-                                    Strategy Law and Organization Foundation
-                                </p>
-                                <p class="course-card__author">Jhon Sina</p>
-                            </article>
-                        </a>
-                    </li>
-                    <li class="dashboard-courses__item">
-                        <a href="course-psych-success.html" class="dashboard-courses__link">
-                            <article class="course-card">
-                                <img
-                                    src="images/homepage/course-images/course-image-5.png"
-                                    alt="Course Image"
-                                    class="course-card__image" />
-                                <div class="course-card__time">
-                                    <span class="course-card__lessons">3 Lessons</span>
-                                    <span class="course-card__duration">6 hours 40 minutes</span>
-                                </div>
-                                <p class="course-card__title">Psychology of Success</p>
-                                <p class="course-card__author">Jhon Sina</p>
-                            </article>
-                        </a>
-                    </li>
-                    <li class="dashboard-courses__item">
-                        <a href="course-python-beginners.html" class="dashboard-courses__link">
-                            <article class="course-card">
-                                <img
-                                    src="images/homepage/course-images/course-image-4.png"
-                                    alt="Course Image"
-                                    class="course-card__image" />
-                                <div class="course-card__time">
-                                    <span class="course-card__lessons">2 Lessons</span>
-                                    <span class="course-card__duration">4 hours 35 minutes</span>
-                                </div>
-                                <p class="course-card__title">
-                                    Learning A-Z: Hands-On Python for Beginners
-                                </p>
-                                <p class="course-card__author">Jhon Sina</p>
-                            </article>
-                        </a>
-                    </li>
+                    <?php
+                    $coursesJSON = file_get_contents(__DIR__ . "/courses/courses.json");
+                    $courses = json_decode($coursesJSON, true);
+
+                    $count = 0;
+                    foreach ($courses as $course):
+                        if ($count === 6) break;
+                    ?>
+                        <li class="course-list__item" data-category="<?php echo htmlspecialchars($course['category']) ?>">
+                            <a href="course.php?slug=<?php echo urlencode($course['slug']); ?>" class="course-list__link">
+                                <article class="course-card">
+                                    <img src="<?php echo htmlspecialchars($course['image']) ?>" alt="<?php echo htmlspecialchars($course['alt']) ?>" class="course-card__image" />
+                                    <div class="course-card__time">
+                                        <span class="course-card__lessons"><?php echo htmlspecialchars($course['lessons']) ?> lessons</span>
+                                        <span class="course-card__duration"><?php echo htmlspecialchars($course['duration']) ?></span>
+                                    </div>
+                                    <h3 class="course-card__title">
+                                        <?php echo htmlspecialchars($course['title']) ?>
+                                    </h3>
+                                    <strong class="course-card__price">$<?php echo htmlspecialchars($course['price']) ?></strong>
+                                    <p class="course-card__author"><?php echo htmlspecialchars($course['author']) ?></p>
+                                </article>
+                            </a>
+                        </li>
+                    <?php
+                        $count++;
+                    endforeach;
+                    ?>
                 </ul>
+
             </section>
             <section class="dashboard-profile dashboard-profile--hidden">
                 <div class="dashboard-profile__image-wrapper">
@@ -201,6 +146,7 @@
                         <input class="dashboard-profile__upload" name="uploadedfile" type="file" id="file" accept="image/jpeg" />
                         <input class="dashboard-profile__submit" type="submit" value="Submit" />
                     </form>
+                    <?php if (isset($message)) echo "<p class='upload-message'>" . htmlspecialchars($message) . "</p>" ?>
                 </div>
                 <div class="dashboard-profile__information">
                     <h4 class="dashboard-profile__title">Your Info:</h4>
@@ -211,6 +157,82 @@
                     </ul>
                     <p class="dashboard-profile__msg">We are happy to have you as a member! <br> We hope you enjoy your time with us.</p>
                 </div>
+                <div class="dashboard-profile__information">
+                    <h4 class="dashboard-profile__title">Fun Fact!:</h4>
+                    <ul class="dashboard-profile__list">
+                        <li class="dashboard-profile__item">You have visited this page <strong><?= $visit_count ?></strong> time(s).</li>
+                        <li class="dashboard-profile__item">Your last visit was on: <strong><?= htmlspecialchars($last_visit) ?></strong></li>
+                    </ul>
+                    <form method="get">
+                        <button class="dashboard-profile__submit" type="submit" name="reset">Clear History</button>
+                    </form>
+                </div>
+            </section>
+            <section class="dashboard-cart dashboard-cart--hidden">
+                <ul class="dashboard-cart__cards">
+                    <?php
+                    $cart = [];
+                    if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                        $cart = $_SESSION['cart'];
+                    }
+
+                    $coursesJSON = file_get_contents(__DIR__ . "/courses/courses.json");
+                    $all_courses = json_decode($coursesJSON, true);
+
+                    if ($coursesJSON === false) {
+                        echo '<p>Error: Could not read courses data for cart.</p>';
+                        $all_courses = [];
+                    } elseif ($all_courses === null && json_last_error() !== JSON_ERROR_NONE) {
+                        echo '<p>Error: Invalid courses data in JSON file for cart: ' . json_last_error_msg() . '</p>';
+                        $all_courses = [];
+                    }
+
+                    $cart_courses = [];
+                    foreach ($cart as $slug) {
+                        foreach ($all_courses as $course_data) {
+                            if ($course_data['slug'] === $slug) {
+                                $cart_courses[] = $course_data;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (empty($cart_courses)) {
+                    } else {
+                        foreach ($cart_courses as $course):
+                    ?>
+                            <li class="course-list__item" data-category="<?php echo htmlspecialchars($course['category']) ?>">
+                                <a href="course.php?slug=<?php echo urlencode($course['slug']); ?>" class="course-list__link">
+                                    <article class="course-card">
+                                        <img src="<?php echo htmlspecialchars($course['image']) ?>" alt="<?php echo htmlspecialchars($course['alt']) ?>" class="course-card__image" />
+                                        <div class="course-card__time">
+                                            <span class="course-card__lessons"><?php echo htmlspecialchars($course['lessons']) ?> lessons</span>
+                                            <span class="course-card__duration"><?php echo htmlspecialchars($course['duration']) ?></span>
+                                        </div>
+                                        <h3 class="course-card__title">
+                                            <?php echo htmlspecialchars($course['title']) ?>
+                                        </h3>
+                                        <strong class="course-card__price">$<?php echo htmlspecialchars($course['price']) ?></strong>
+                                        <p class="course-card__author"><?php echo htmlspecialchars($course['author']) ?></p>
+                                    </article>
+                                </a>
+                            </li>
+                    <?php
+                        endforeach;
+                    }
+                    ?>
+                </ul>
+                <?php
+                if (!empty($cart_courses)) {
+                ?>
+                    <form action="php/empty_cart.php" method="post" class="dashboard-cart__form">
+                        <button type="submit" class="dashboard-cart__btn">Clear Cart</button>
+                    </form>
+                <?php
+                } else {
+                    echo '<p class="dashboard-cart__empty-message">Your cart is empty. Start exploring our courses!</p>';
+                }
+                ?>
             </section>
         </div>
     </main>

@@ -15,13 +15,7 @@
     <section class="hero">
       <p class="hero__tag">Education Solution</p>
       <h1 class="hero__title">Massive Courses Available for Anyone</h1>
-      <form class="hero__search-bar">
-        <input
-          class="hero__search-input"
-          type="search"
-          placeholder="AI-Powered Search: Discover the Perfect Course for You" />
-        <button class="hero__search-submit" type="submit">Search</button>
-      </form>
+
       <ul class="hero__list">
         <li>More than 2k Courses</li>
         <li>1.1k Free Courses</li>
@@ -154,118 +148,36 @@
         </li>
       </ul>
       <ul class="course-list__cards">
-        <li class="course-list__item" data-category="featured">
-          <a href="course-figma.html" class="course-list__link">
-            <article class="course-card">
-              <img
-                src="images/homepage/course-images/course-image-2.png"
-                alt="Course Image"
-                class="course-card__image" />
-              <div class="course-card__time">
-                <span class="course-card__lessons">3 Lessons</span>
-                <span class="course-card__duration">2 hours 40 minutes</span>
-              </div>
-              <p class="course-card__title">
-                Learn Essentials of User Interface Design in Figma
-              </p>
-              <strong class="course-card__price">$60.00</strong>
-              <p class="course-card__author">John Cena</p>
-            </article>
-          </a>
-        </li>
-        <li class="course-list__item" data-category="marketing">
-          <a href="course-designer-skills.html" class="course-list__link">
-            <article class="course-card">
-              <img
-                src="images/homepage/course-images/course-image-5.png"
-                alt="Course Image"
-                class="course-card__image" />
-              <div class="course-card__time">
-                <span class="course-card__lessons">5 Lessons</span>
-                <span class="course-card__duration">5 hours 40 minutes</span>
-              </div>
-              <p class="course-card__title">
-                Designer Essential Skills You Must Need To Know
-              </p>
-              <strong class="course-card__price">$40.00</strong>
-              <p class="course-card__author">Jonas Schmedtmann</p>
-            </article>
-          </a>
-        </li>
-        <li class="course-list__item" data-category="language">
-          <a href="course-python-dsml.html" class="course-list__link">
-            <article class="course-card">
-              <img
-                src="images/homepage/course-images/course-image-3.png"
-                alt="Course Image"
-                class="course-card__image" />
-              <div class="course-card__time">
-                <span class="course-card__lessons">6 Lessons</span>
-                <span class="course-card__duration">12 hours 40 minutes</span>
-              </div>
-              <p class="course-card__title">
-                Python for Data Science & Machine Learning
-              </p>
-              <strong class="course-card__price">$86.00</strong>
-              <p class="course-card__author">Jhon Sina</p>
-            </article>
-          </a>
-        </li>
-        <li class="course-list__item" data-category="artificial">
-          <a href="course-strategy-law.html" class="course-list__link">
-            <article class="course-card">
-              <img
-                src="images/homepage/course-images/course-image-1.png"
-                alt="Course Image"
-                class="course-card__image" />
-              <div class="course-card__time">
-                <span class="course-card__lessons">4 Lessons</span>
-                <span class="course-card__duration">5 hours 55 minutes</span>
-              </div>
-              <p class="course-card__title">
-                Strategy Law and Organization Foundation
-              </p>
-              <strong class="course-card__price">$128.00</strong>
-              <p class="course-card__author">Jhon Sina</p>
-            </article>
-          </a>
-        </li>
-        <li class="course-list__item" data-category="language">
-          <a href="course-psych-success.html" class="course-list__link">
-            <article class="course-card">
-              <img
-                src="images/homepage/course-images/course-image-5.png"
-                alt="Course Image"
-                class="course-card__image" />
-              <div class="course-card__time">
-                <span class="course-card__lessons">3 Lessons</span>
-                <span class="course-card__duration">6 hours 40 minutes</span>
-              </div>
-              <p class="course-card__title">Psychology of Success</p>
-              <strong class="course-card__price">$55.00</strong>
-              <p class="course-card__author">Jhon Sina</p>
-            </article>
-          </a>
-        </li>
-        <li class="course-list__item" data-category="artificial">
-          <a href="course-python-beginners.html" class="course-list__link">
-            <article class="course-card">
-              <img
-                src="images/homepage/course-images/course-image-4.png"
-                alt="Course Image"
-                class="course-card__image" />
-              <div class="course-card__time">
-                <span class="course-card__lessons">2 Lessons</span>
-                <span class="course-card__duration">4 hours 35 minutes</span>
-              </div>
-              <p class="course-card__title">
-                Learning A-Z: Hands-On Python for Beginners
-              </p>
-              <strong class="course-card__price">$20.00</strong>
-              <p class="course-card__author">Jhon Sina</p>
-            </article>
-          </a>
-        </li>
+        <?php
+        $coursesJSON = file_get_contents(__DIR__ . "/courses/courses.json");
+        $courses = json_decode($coursesJSON, true);
+        $count = 0;
+        foreach ($courses as $course):
+          if ($count === 6) break;
+        ?>
+          <li class="course-list__item" data-category="<?php echo htmlspecialchars($course['category']) ?>">
+            <a href="course.php?slug=<?php echo urlencode($course['slug']); ?>" class="course-list__link">
+              <article class="course-card">
+                <img
+                  src="<?php echo htmlspecialchars($course['image']) ?>"
+                  alt="<?php echo htmlspecialchars($course['alt']) ?>"
+                  class="course-card__image" />
+                <div class="course-card__time">
+                  <span class="course-card__lessons"><?php echo htmlspecialchars($course['lessons']) ?> lessons</span>
+                  <span class="course-card__duration"><?php echo htmlspecialchars($course['duration']) ?></span>
+                </div>
+                <h3 class="course-card__title">
+                  <?php echo htmlspecialchars($course['title']) ?>
+                </h3>
+                <strong class="course-card__price">$<?php echo htmlspecialchars($course['price']) ?></strong>
+                <p class="course-card__author"><?php echo htmlspecialchars($course['author']) ?></p>
+              </article>
+            </a>
+          </li>
+        <?php
+          $count++;
+        endforeach;
+        ?>
       </ul>
     </section>
     <section class="stats">
@@ -406,59 +318,22 @@
       <span class="news-blog__tag">News Blog</span>
       <h2 class="news-blog__title">Latest News and Blogs</h2>
       <div class="news-blog__cards">
-        <a href="#" class="news-blog__link">
-          <article class="news-blog__card">
-            <img
-              class="news-blog__image"
-              src="images/homepage/news-blogs/start-up.png"
-              alt="Girl presenting start up project" />
-            <h3 class="news-blog__name">
-              We are helping our community with Starting
-            </h3>
-            <div class="news-blog__author">
+        <?php
+        $postsJson = file_get_contents(__DIR__ . '/blogs/posts.json');
+        $posts = json_decode($postsJson, true);
+        ?>
+        <?php foreach ($posts as $post): ?>
+          <a class="news-blog__link" href="blogpost.php?slug=<?php echo urlencode($post['slug']); ?>">
+            <article class="news-blog__card">
               <img
-                class="news-blog__author-image"
-                src="images/homepage/reviews/review-author.png"
-                alt="Author's picture" />
-              <p class="news-blog__author-name">John Doe</p>
-            </div>
-          </article>
-        </a>
-        <a class="news-blog__link">
-          <article class="news-blog__card">
-            <img
-              class="news-blog__image"
-              src="images/homepage/news-blogs/random-text.jpg"
-              alt="random lorem ipsum text" />
-            <h3 class="news-blog__name">Lorem ipsum the origins</h3>
-            <div class="news-blog__author">
-              <img
-                class="news-blog__author-image"
-                src="images/homepage/reviews/review-author.png"
-                alt="Author's picture" />
-              <p class="news-blog__author-name">John Doe</p>
-            </div>
-          </article>
-        </a>
-
-        <a class="news-blog__link">
-          <article class="news-blog__card">
-            <img
-              class="news-blog__image"
-              src="images/homepage/news-blogs/news-blog-consumers-370x222.jpg.png"
-              alt="boy thinking about consumer feedback" />
-            <h3 class="news-blog__name">
-              Delivering what consumers really want?
-            </h3>
-            <div class="news-blog__author">
-              <img
-                class="news-blog__author-image"
-                src="images/homepage/reviews/review-author.png"
-                alt="Author's picture" />
-              <p class="news-blog__author-name">John Doe</p>
-            </div>
-          </article>
-        </a>
+                class="news-blog__image"
+                src="<?php echo htmlspecialchars($post['image']); ?>"
+                alt="<?php echo htmlspecialchars($post['alt']); ?>" />
+              <h3 class="news-blog__name"><?php echo htmlspecialchars($post['title']); ?></h3>
+              <p class="news-blog__author-name">By <?php echo htmlspecialchars($post['author']); ?></p>
+            </article>
+          </a>
+        <?php endforeach; ?>
       </div>
     </section>
   </main>
