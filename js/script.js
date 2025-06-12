@@ -1,12 +1,15 @@
 const trail = (str) => str.replace(/^\/+/, "");
 const pages = document.querySelectorAll(".header__nav-link");
-const curr = trail(window.location.pathname);
-console.log(curr);
+const currPath = trail(window.location.pathname);
+const currFile = currPath.split("/").pop() || "index.php";
+
 pages.forEach((page) => {
   const link = page.getAttribute("href");
-  console.log(link);
+  if (!link) return;
 
-  if (link === curr) {
+  const linkFile = trail(link).split("/").pop();
+
+  if (currFile === linkFile) {
     page.classList.add("header__nav-link--active");
   } else {
     page.classList.remove("header__nav-link--active");

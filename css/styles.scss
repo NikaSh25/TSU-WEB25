@@ -852,6 +852,17 @@ ul {
     }
   }
 }
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
 
 .login-page {
   display: flex;
@@ -863,7 +874,7 @@ ul {
   &__container {
     display: flex;
     flex-direction: column;
-    gap: toRem(100);
+    gap: toRem(50);
     padding: toRem(20);
     @media screen and (max-width: 480px) {
       max-width: 360px;
@@ -893,11 +904,27 @@ ul {
       @include shadow(0, 0, 12px, rgba(95, 45, 237, 0.5));
     }
   }
+  &__error {
+    color: $secondary-color;
+    font-weight: bold;
+    padding-left: toRem(5);
+    font-size: toRem(15);
+    &--hidden {
+      display: none;
+    }
+  }
+  &__error-message {
+    color: $main-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    animation: pulse 1s infinite ease-in-out;
+  }
   &__toggle-visibility {
     position: absolute;
     top: 0px;
     right: 0px;
-    z-index: 100;
+    z-index: 1000;
     background: none;
     border: none;
     transform: translate(-50%, 75%);
@@ -1094,7 +1121,7 @@ ul {
     order: 2;
     display: flex;
     flex-direction: column;
-    gap: toRem(100);
+    gap: toRem(50);
     padding: toRem(20);
     @media screen and (max-width: 480px) {
       max-width: 360px;
@@ -1114,7 +1141,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: toRem(10);
-    padding: toRem(10) toRem(100) toRem(5) toRem(10);
+    padding: toRem(10);
     border: 1px solid $sub-color;
     border-radius: 10px;
     position: relative;
@@ -1146,6 +1173,11 @@ ul {
     &:hover {
       outline: none;
     }
+    &--date {
+      font-size: toRem(14);
+      padding-right: 0;
+      position: relative;
+    }
   }
   &__btn {
     background: $main-color;
@@ -1173,6 +1205,15 @@ ul {
   &__image {
     max-width: 600px;
     @media screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
+  &__error {
+    color: $secondary-color;
+    font-weight: bold;
+    padding-left: toRem(5);
+    font-size: toRem(12);
+    &--hidden {
       display: none;
     }
   }
@@ -1443,6 +1484,10 @@ ul {
 }
 
 .courses-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1458,12 +1503,15 @@ ul {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(12, 1fr);
     }
+    &--hidden {
+      display: none;
+    }
   }
   &__no-results {
+    display: block;
     font-weight: bold;
     color: $sub-color;
     font-size: toRem(60);
-    justify-self: center;
     &--hidden {
       display: none;
     }
@@ -1482,4 +1530,165 @@ ul {
 
 .courses-hero {
   @include secondary-hero;
+}
+
+.dashboard-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: toRem(50) toRem(50);
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: toRem(40);
+  position: relative;
+  &__title {
+    font-size: toRem(55);
+  }
+  &__text {
+    font-size: toRem(30);
+    color: $sub-color;
+    width: 40ch;
+    font-weight: 500;
+    &--red {
+      color: $secondary-color;
+      font-weight: bold;
+    }
+  }
+}
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: toRem(50);
+  padding: toRem(75) 0;
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.dashboard-sidebar {
+  width: 350px;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: toRem(50);
+    width: toRem(300);
+    padding: toRem(50) 0;
+    border: 1px solid #dddddd;
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__btn {
+    background-color: white;
+    border: none;
+    font-size: toRem(30);
+    color: $sub-color;
+    font-weight: bold;
+    border-bottom: 4px solid transparent;
+    @include transition(border-color, 0.2s, ease);
+    &:hover,
+    &:active {
+      cursor: pointer;
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+    &--active {
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+  }
+}
+.dashboard-courses {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  &__tag {
+    @include tag;
+  }
+  &__title {
+    text-align: center;
+    color: $sub-color;
+    font-size: toRem(44);
+    font-weight: bold;
+    line-height: 1.35;
+    max-width: 22ch;
+    &--red {
+      text-decoration: underline solid $secondary-color 6px;
+      text-underline-position: below;
+      text-underline-offset: 1px;
+    }
+  }
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: toRem(30) toRem(160);
+    gap: toRem(80);
+    border-radius: 10px;
+    @media screen and (max-width: 480px) {
+      padding: toRem(30);
+    }
+  }
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1366px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 720px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+    }
+  }
+  &__item {
+    @include transition(box-shadow, 0.2s, ease-in);
+    &:hover,
+    &:active {
+      @include shadow(0, 0, 12px, rgba(95, 45, 237, 0.5));
+    }
+  }
+  &--hidden {
+    display: none;
+  }
+}
+
+.dashboard-profile {
+  display: flex;
+  &--hidden {
+    display: none;
+  }
+  &__image-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+  &__image {
+    max-width: 150px;
+    max-height: 200px;
+    width: 125px;
+    height: 125px;
+  }
 }
