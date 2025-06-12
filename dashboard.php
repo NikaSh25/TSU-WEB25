@@ -50,7 +50,18 @@
             }
         }
     }
-
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
+        $profileImagePath = 'uploads/' . $newFileName;
+        if (file_exists($profileImagePath)) {
+            if (unlink($profileImagePath)) {
+                $message = "Profile image deleted successfully.";
+            } else {
+                $message = "Failed to delete profile image.";
+            }
+        } else {
+            $message = "No profile image to delete.";
+        }
+    }
 
     function getUploadErrorMessage($errorCode)
     {
@@ -134,7 +145,9 @@
             </section>
             <section class="dashboard-profile dashboard-profile--hidden">
                 <div class="dashboard-profile__image-wrapper">
-                    <?php if (file_exists('uploads/' . $newFileName)): ?>
+                    <?php
+                    $profileImagePath = 'uploads/' . $newFileName;
+                    if (file_exists($profileImagePath)): ?>
                         <img class="dashboard-profile__image" src="<?php echo 'uploads/' . $newFileName; ?>" alt="Profile image">
                     <?php else: ?>
                         <img class="dashboard-profile__image" src="images/misc/placeholder.svg" alt="Profile image">
@@ -146,6 +159,12 @@
                         <input class="dashboard-profile__upload" name="uploadedfile" type="file" id="file" accept="image/jpeg" />
                         <input class="dashboard-profile__submit" type="submit" value="Submit" />
                     </form>
+                    <?php if (file_exists($profileImagePath)): ?>
+                        <form class="dashboard-profile__form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                            <input type="hidden" name="delete_image" value="1" />
+                            <button class="dashboard-profile__submit dashboard-profile__submit--delete" type="submit">Delete Image</button>
+                        </form>
+                    <?php endif; ?>
                     <?php if (isset($message)) echo "<p class='upload-message'>" . htmlspecialchars($message) . "</p>" ?>
                 </div>
                 <div class="dashboard-profile__information">
