@@ -1,0 +1,8 @@
+{
+    "first_name": "testUser",
+    "last_name": "testUser",
+    "birthday": "1960-12-12",
+    "email": "test@user.com",
+    "member_since": "2025-06-12",
+    "password": "$2y$10$M2BT81CH6fKomTRMVthSSuCsyz.FvNnla7RrefsKWL0tzWOeNGyeW"
+}
