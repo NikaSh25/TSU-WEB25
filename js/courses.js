@@ -26,8 +26,10 @@ function filterCourses() {
 
   if (showing === 0) {
     noResults.classList.remove("courses-grid__no-results--hidden");
+    noResults.classList.add("courses-grid__cards--hidden");
   } else {
     noResults.classList.add("courses-grid__no-results--hidden");
+    noResults.classList.remove("courses-grid__cards--hidden");
   }
 }
 
@@ -46,8 +48,8 @@ document.querySelectorAll(".courses-filters__filter-btn").forEach((button) => {
 });
 
 const form = document.querySelector(".courses-filters__search-form");
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
   const searchInput = document.querySelector(".courses-filters__search-input");
   currentSearch = searchInput.value.trim().toLowerCase();

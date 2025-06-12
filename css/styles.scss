@@ -163,42 +163,7 @@ ul {
     line-height: 1.4;
     max-width: 18ch;
   }
-  &__search-bar {
-    width: 100%;
-    max-width: toRem(720);
-    min-width: toRem(360);
-    margin: 1rem 0;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    background: #fff;
-    border-radius: 40px;
-    display: flex;
-    justify-content: space-between;
-    @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
-  }
-  &__search-input {
-    width: 100%;
-    border: 0;
-    border-radius: 15px;
-    &:focus,
-    &:hover {
-      outline: none;
-    }
-  }
-  &__search-submit {
-    background-color: $main-color;
-    padding: 0.3rem 0.8rem 0.3rem 0.3rem;
-    font-size: toRem(14);
-    border-radius: 20px;
-    color: white;
-    display: flex;
-    align-items: center;
-    border: none;
-    cursor: pointer;
-    &::before {
-      content: url(../images/misc/stars-icon.svg);
-      scale: 0.7;
-    }
-  }
+
   &__list {
     display: flex;
     gap: 1rem;
@@ -708,65 +673,6 @@ ul {
     display: flex;
     align-items: center;
     gap: toRem(20);
-    &-image {
-      max-width: 42px;
-    }
-  }
-}
-
-.support {
-  background-color: $footer-bg-color;
-  padding: toRem(50);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: toRem(50);
-  &__heading {
-    display: flex;
-    flex-direction: column;
-    gap: toRem(30);
-  }
-  &__title {
-    font-size: toRem(40);
-    font-weight: bold;
-    color: #fff;
-    &--purple {
-      color: $main-color;
-    }
-  }
-  &__text {
-    color: $sub-color;
-    font-weight: 600;
-  }
-  &__form {
-    padding-left: toRem(50);
-    @media screen and (max-width: 480px) {
-      padding-left: 0;
-    }
-  }
-  &__input {
-    background-color: #202942;
-    border: none;
-    color: hsl(0, 0%, 100%);
-    padding: toRem(20);
-    max-width: toRem(420);
-    min-width: toRem(320);
-    @media screen and (max-width: 480px) {
-      min-width: toRem(200);
-    }
-  }
-  &__btn {
-    background-color: $main-color;
-    border: none;
-    padding: toRem(20);
-    color: white;
-    cursor: pointer;
-    &--responsive {
-      @media screen and (max-width: 480px) {
-        display: none;
-      }
-    }
   }
 }
 
@@ -852,6 +758,17 @@ ul {
     }
   }
 }
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
 
 .login-page {
   display: flex;
@@ -863,7 +780,7 @@ ul {
   &__container {
     display: flex;
     flex-direction: column;
-    gap: toRem(100);
+    gap: toRem(50);
     padding: toRem(20);
     @media screen and (max-width: 480px) {
       max-width: 360px;
@@ -893,11 +810,27 @@ ul {
       @include shadow(0, 0, 12px, rgba(95, 45, 237, 0.5));
     }
   }
+  &__error {
+    color: $secondary-color;
+    font-weight: bold;
+    padding-left: toRem(5);
+    font-size: toRem(15);
+    &--hidden {
+      display: none;
+    }
+  }
+  &__error-message {
+    color: $main-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    animation: pulse 1s infinite ease-in-out;
+  }
   &__toggle-visibility {
     position: absolute;
     top: 0px;
     right: 0px;
-    z-index: 100;
+    z-index: 1000;
     background: none;
     border: none;
     transform: translate(-50%, 75%);
@@ -989,7 +922,10 @@ ul {
 
 .contact-us {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: toRem(20);
   padding: toRem(90);
   &__form {
     width: toRem(1000);
@@ -1023,6 +959,13 @@ ul {
     font-size: toRem(20);
     border-radius: 15px;
     cursor: pointer;
+  }
+  &__status {
+    color: $main-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    animation: pulse 1s ease-in-out 0s 10;
   }
 }
 
@@ -1094,7 +1037,7 @@ ul {
     order: 2;
     display: flex;
     flex-direction: column;
-    gap: toRem(100);
+    gap: toRem(50);
     padding: toRem(20);
     @media screen and (max-width: 480px) {
       max-width: 360px;
@@ -1114,7 +1057,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: toRem(10);
-    padding: toRem(10) toRem(100) toRem(5) toRem(10);
+    padding: toRem(10);
     border: 1px solid $sub-color;
     border-radius: 10px;
     position: relative;
@@ -1146,6 +1089,11 @@ ul {
     &:hover {
       outline: none;
     }
+    &--date {
+      font-size: toRem(14);
+      padding-right: 0;
+      position: relative;
+    }
   }
   &__btn {
     background: $main-color;
@@ -1174,6 +1122,18 @@ ul {
     max-width: 600px;
     @media screen and (max-width: 1024px) {
       display: none;
+    }
+  }
+  &__error {
+    color: $secondary-color;
+    font-weight: bold;
+    padding-left: toRem(5);
+    font-size: toRem(12);
+    &--hidden {
+      display: none;
+    }
+    &--big {
+      font-size: toRem(20);
     }
   }
 }
@@ -1443,27 +1403,31 @@ ul {
 }
 
 .courses-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &__cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
     gap: toRem(15);
     justify-content: center;
     align-items: center;
     @media screen and (max-width: 1366px) {
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(6, 1fr);
     }
     @media screen and (max-width: 720px) {
       grid-template-columns: repeat(1, 1fr);
-      grid-template-rows: repeat(12, 1fr);
+    }
+    &--hidden {
+      display: none;
     }
   }
   &__no-results {
+    display: block;
     font-weight: bold;
     color: $sub-color;
     font-size: toRem(60);
-    justify-self: center;
     &--hidden {
       display: none;
     }
@@ -1482,4 +1446,395 @@ ul {
 
 .courses-hero {
   @include secondary-hero;
+}
+
+.dashboard-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: toRem(50) toRem(50);
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: toRem(40);
+  position: relative;
+  &__title {
+    font-size: toRem(55);
+  }
+  &__text {
+    font-size: toRem(30);
+    color: $sub-color;
+    width: 40ch;
+    font-weight: 500;
+    &--red {
+      color: $secondary-color;
+      font-weight: bold;
+    }
+  }
+}
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: toRem(50);
+  padding: toRem(75) 0;
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.dashboard-nav {
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: toRem(50);
+    width: toRem(375);
+    padding: toRem(40) toRem(50);
+    @include shadow(0, 0px, 8px, rgba(0, 0, 0, 0.2));
+    @media screen and (max-width: 480px) {
+      flex-wrap: wrap;
+    }
+  }
+  &__btn {
+    background-color: white;
+    border: none;
+    font-size: toRem(24);
+    color: $sub-color;
+    font-weight: bold;
+    border-bottom: 4px solid transparent;
+    @include transition(border-color, 0.2s, ease);
+    &:hover,
+    &:active {
+      cursor: pointer;
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+    &--active {
+      color: $main-color;
+      font-weight: bold;
+      border-bottom: 4px solid $main-color;
+    }
+  }
+}
+.dashboard-courses {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1366px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 720px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+    }
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.dashboard-profile {
+  display: flex;
+  gap: toRem(25);
+  flex-wrap: wrap;
+  justify-content: center;
+  &--hidden {
+    display: none;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__image-wrapper {
+    width: toRem(300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: toRem(30);
+    padding: toRem(50);
+    @include shadow(0, 0px, 8px, rgba(0, 0, 0, 0.2));
+  }
+  &__submit {
+    background-color: $main-color;
+    padding: toRem(12);
+    font-size: toRem(14);
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  &__upload {
+    display: none;
+  }
+  &__label {
+    background-color: $main-color;
+    padding: toRem(12);
+    font-size: toRem(14);
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+  &__image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  &__information {
+    width: toRem(300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: toRem(70);
+    padding: toRem(50);
+    @include shadow(0, 0px, 8px, rgba(0, 0, 0, 0.2));
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(35);
+  }
+  &__item {
+    color: $main-color;
+    font-weight: bold;
+  }
+  &__msg {
+    color: $sub-color;
+  }
+}
+.dashboard-cart {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 1366px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 720px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &__empty-message {
+    color: $main-color;
+    font-weight: 600;
+    font-size: toRem(30);
+  }
+  &__btn {
+    background-color: $main-color;
+    padding: toRem(12);
+    font-size: toRem(14);
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  &--hidden {
+    display: none;
+  }
+}
+.post {
+  padding: toRem(50) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  &__name {
+    font-size: toRem(30);
+    margin-bottom: toRem(16);
+  }
+  &__image {
+    padding: toRem(50) toRem(50) 0 toRem(50);
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin-bottom: toRem(32);
+    @media screen and (max-width: 480px) {
+      max-width: 300;
+    }
+  }
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: toRem(20);
+    justify-content: center;
+    margin-bottom: toRem(32);
+    font-size: toRem(14);
+  }
+  &__text {
+    max-width: 100ch;
+    line-height: 1.6;
+    font-size: toRem(20);
+    padding: 0 toRem(24);
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+
+.course-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: toRem(50) toRem(50);
+  background-image: url(../images/contact/Background.png);
+  background-repeat: repeat;
+  gap: toRem(40);
+  position: relative;
+  &__title {
+    font-size: toRem(55);
+  }
+  &__text {
+    font-size: toRem(16);
+    color: $sub-color;
+    width: 40ch;
+    font-weight: 500;
+    &--red {
+      color: $secondary-color;
+      font-weight: bold;
+    }
+  }
+}
+
+.course-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: toRem(100);
+  gap: toRem(50);
+
+  &__title {
+    font-size: toRem(40);
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: toRem(50);
+    gap: toRem(50);
+
+    @include shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+  }
+  &__time {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(50);
+  }
+  &__lessons {
+    display: flex;
+    gap: 0.5rem;
+    &::before {
+      content: url(../images/misc/book-icon.svg);
+    }
+  }
+  &__duration {
+    display: flex;
+    gap: 0.5rem;
+    &::before {
+      content: url(../images/misc/clock-icon.svg);
+    }
+  }
+  &__price {
+    color: $main-color;
+    font-size: toRem(18);
+  }
+  &__author {
+    align-self: stretch;
+    font-weight: 600;
+    padding: 1rem 0;
+    border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+  }
+  &__overview {
+    max-width: 100ch;
+    line-height: 1.6;
+    font-size: toRem(20);
+    padding: 0 toRem(24);
+    margin: 0 auto;
+    text-align: left;
+  }
+  &__video {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+  &__cart {
+    background: $main-color;
+    color: white;
+    padding: toRem(20);
+    border: none;
+    font-weight: bold;
+    font-size: toRem(20);
+    border-radius: 15px;
+    cursor: pointer;
+    animation: wiggle 2s infinite ease-in-out;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-5deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(5deg);
+  }
+  35% {
+    transform: rotateZ(-5deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
 }
