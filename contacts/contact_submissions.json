@@ -1,9 +1,16 @@
 [
-  {
-    "timestamp": "2025-06-12 20:43:21",
-    "name": "test user",
-    "email": "test@example.com",
-    "subject": "test subject",
-    "message": "test text lorem ipsum"
-  }
+    {
+        "timestamp": "2025-06-12 20:43:21",
+        "name": "test user",
+        "email": "test@example.com",
+        "subject": "test subject",
+        "message": "test text lorem ipsum"
+    },
+    {
+        "timestamp": "2025-06-13 17:44:09",
+        "name": "SecondTestAppend",
+        "email": "SecondTest@example.com",
+        "subject": "Appending This to contact json instead of overwriting it",
+        "message": "This is a test to see if overwriting contact_submissions has been fixed on each submission"
+    }
 ]
