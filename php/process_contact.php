@@ -32,6 +32,9 @@
     if (file_exists($filepath) && filesize($filepath) > 0) {
         $file_content = file_get_contents($filepath);
         $decoded_content = json_decode($file_content, true);
+        if (is_array($decoded_content)) {
+            $current_submissions = $decoded_content;
+        }
     }
 
     $current_submissions[] = $submission;
